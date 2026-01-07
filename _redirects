@@ -1,0 +1,9 @@
+# Cloudflare Pages - Redirects and rewrites
+
+# Rewrite clean URLs to actual page locations
+/legal /pages/legal.html 200
+/privacy /pages/privacy.html 200
+/sla /pages/sla.html 200
+
+# Fallback for any 404s to home page (optional, comment out if not desired)
+# /* /index.html 404
