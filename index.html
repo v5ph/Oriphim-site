@@ -484,32 +484,39 @@
 
                 const formData = new FormData(e.target);
                 
-                // Add redirect to false to get JSON response
-                formData.append('redirect', 'false');
-                
                 try {
                     const response = await fetch('https://api.web3forms.com/submit', {
                         method: 'POST',
                         headers: {
+                            'Content-Type': 'application/json',
                             'Accept': 'application/json'
                         },
-                        body: formData
+                        body: JSON.stringify({
+                            access_key: '2e6f8de3-108b-4343-8b29-5add3e4abc6f',
+                            subject: 'New ORIPHIM Inquiry',
+                            from_name: 'ORIPHIM Website',
+                            institution: formData.get('institution'),
+                            email: formData.get('email'),
+                            capital_base: formData.get('capital_base'),
+                            integration: formData.get('integration'),
+                            message: formData.get('message')
+                        })
                     });
 
                     const data = await response.json();
                     
-                    console.log('Response:', data); // Debug log
+                    console.log('Full response:', response.status, data);
 
                     if (data.success) {
                         setSubmitted(true);
-                        e.target.reset(); // Reset form
+                        e.target.reset();
                     } else {
                         console.error('Form submission error:', data);
-                        alert('Submission failed: ' + (data.message || 'Unknown error. Please try again or email v5philcarr@gmail.com directly.'));
+                        alert('Error: ' + (data.message || 'Please try again'));
                     }
                 } catch (error) {
                     console.error('Network error:', error);
-                    alert('Network error: ' + error.message + '. Please check your connection and try again.');
+                    alert('Network error. Please try again.');
                 } finally {
                     setIsSubmitting(false);
                 }
