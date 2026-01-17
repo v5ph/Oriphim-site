@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ORIPHIM | Research-Indicator Delivery & Strategy IP Licensing</title>
+    <title>ORIPHIM | Receipts for Every AI Decision</title>
     
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -136,11 +136,12 @@
                         <span style={{ fontFamily: "'Rajdhani', sans-serif", fontWeight: 700 }}>m</span>
                     </div>
                     <div className="hidden md:flex space-x-8 text-xs font-medium tracking-wide text-gray-600">
-                        <a href="#methodology" className="hover:text-black transition-colors">METHODOLOGY</a>
-                        <a href="#strategies" className="hover:text-black transition-colors">STRATEGIES</a>
-                        <a href="#infrastructure" className="hover:text-black transition-colors">INFRASTRUCTURE</a>
-                        <a href="#whitepapers" className="hover:text-black transition-colors">WHITEPAPERS</a>
-                        <a href="#licensing" className="text-oriphim-accent hover:text-black transition-colors">LICENSING</a>
+                        <a href="#product" className="hover:text-black transition-colors">PRODUCT</a>
+                        <a href="#how-it-works" className="hover:text-black transition-colors">HOW IT WORKS</a>
+                        <a href="#evidence-packs" className="hover:text-black transition-colors">EVIDENCE PACKS</a>
+                        <a href="#security" className="hover:text-black transition-colors">SECURITY</a>
+                        <a href="#pricing" className="text-oriphim-accent hover:text-black transition-colors">PRICING / PILOT</a>
+                        <a href="#contact" className="hover:text-black transition-colors">CONTACT</a>
                     </div>
                 </div>
             </nav>
@@ -201,21 +202,21 @@
                         2026
                     </div>
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-[1.1] mb-8 text-black/90">
-                        Research grade market indicators—delivered to your desk.
+                        Receipts for every AI decision.
                     </h1>
                     <p className="text-lg text-gray-700 max-w-2xl leading-relaxed mb-10 border-l border-gray-300 pl-6">
-                        We deliver clear market indicator updates you can plug into your internal workflow—built for reliability, auditability, and controlled updates. <br/>
+                        Oriphim generates a replayable audit trail for AI outputs — inputs, outputs, model & prompt versions, policy checks, risk flags, and 1-click exports (PDF/JSON). <br/>
                         <span className="block mt-2 text-sm font-mono text-gray-600">
-                            NOT INVESTMENT ADVICE. NOT TRADE INSTRUCTIONS. NO EXECUTION. NO BROKERAGE ACCESS.
+                            Built for compliance, incident response, and AI governance. Oriphim logs evidence — you control policy and enforcement.
                         </span>
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4">
                         <a href="#contact" className="group inline-flex items-center justify-center px-8 py-3 bg-black text-[#e4e2dd] font-medium text-xs tracking-widest hover:bg-[#333] transition-colors duration-200 uppercase">
-                            Submit Inquiry
+                            Book 8-min Demo
                             <span className="ml-2 opacity-70 group-hover:translate-x-1 transition-transform"><ArrowRight /></span>
                         </a>
-                        <a href="#methodology" className="inline-flex items-center justify-center px-8 py-3 border border-black/20 text-black font-medium text-xs tracking-widest hover:bg-black/5 transition-colors duration-200 uppercase">
-                            System Architecture
+                        <a href="#how-it-works" className="inline-flex items-center justify-center px-8 py-3 border border-black/20 text-black font-medium text-xs tracking-widest hover:bg-black/5 transition-colors duration-200 uppercase">
+                            View Live Demo
                         </a>
                     </div>
                 </div>
@@ -223,11 +224,11 @@
         );
 
         const Methodology = () => (
-            <section id="methodology" className="py-20 px-6 border-t border-black/10">
+            <section id="how-it-works" className="py-20 px-6 border-t border-black/10">
                 <div className="max-w-7xl mx-auto">
                     <SectionHeader 
-                        title="System Architecture" 
-                        subtitle="We publish market indicator updates. You decide how (or whether) to use them. Trading and risk stay entirely in your control."
+                        title="How It Works" 
+                        subtitle="Oriphim captures every AI action as a signed event: versioned inputs/outputs, policy results, lineage, and export-ready evidence."
                     />
                     
                     <div className="bg-white/60 p-8 border border-black/10 shadow-sm mb-8">
@@ -252,21 +253,21 @@
                     </div>
 
                     <p className="text-xs text-gray-500 mb-12 font-mono border-l-2 border-gray-300 pl-3">
-                        NOTE: Oriphim provides market indicators only. We do not give trade instructions or investment advice.
+                        NOTE: Oriphim provides AI evidence logging and exports. Not legal advice. Customer controls enforcement and compliance decisions.
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
                         <div className="pr-4">
-                            <h4 className="font-bold mb-2 flex items-center gap-2 text-gray-900"><ServerIcon size={16}/> Indicator Computation</h4>
-                            <p className="text-gray-600 leading-relaxed">Indicators are generated in a controlled environment, checked for data quality, and delivered with a clear timestamp and version label.</p>
+                            <h4 className="font-bold mb-2 flex items-center gap-2 text-gray-900"><ServerIcon size={16}/> Event Capture</h4>
+                            <p className="text-gray-600 leading-relaxed">Every AI action is captured as a signed event with timestamps, versions, and cryptographic hashes for tamper-proof evidence.</p>
                         </div>
                         <div className="pr-4">
-                            <h4 className="font-bold mb-2 flex items-center gap-2 text-gray-900"><ActivityIcon size={16}/> Delivery</h4>
-                            <p className="text-gray-600 leading-relaxed">Indicators are delivered reliably to your systems. We support pull delivery by default, with optional push/streaming for teams that want it.</p>
+                            <h4 className="font-bold mb-2 flex items-center gap-2 text-gray-900"><ActivityIcon size={16}/> Policy Engine</h4>
+                            <p className="text-gray-600 leading-relaxed">Real-time policy checks flag PII leaks, unsafe outputs, and regulated actions. Results are logged and exportable.</p>
                         </div>
                         <div className="pr-4">
-                            <h4 className="font-bold mb-2 flex items-center gap-2 text-gray-900"><ShieldIcon size={16}/> Compliance Boundary</h4>
-                            <p className="text-gray-600 leading-relaxed">We never place trades and never touch brokerage systems. Your team remains the only decision-maker and gatekeeper.</p>
+                            <h4 className="font-bold mb-2 flex items-center gap-2 text-gray-900"><ShieldIcon size={16}/> Export & Replay</h4>
+                            <p className="text-gray-600 leading-relaxed">Generate PDF/JSON evidence packs for audits. Replay exact AI behavior from any point in time with deterministic reproduction.</p>
                         </div>
                     </div>
                 </div>
@@ -274,11 +275,11 @@
         );
 
         const SignalUsage = () => (
-            <section className="py-20 px-6 border-t border-black/10">
+            <section id="product" className="py-20 px-6 border-t border-black/10">
                 <div className="max-w-7xl mx-auto">
                     <SectionHeader 
-                        title="Client-controlled usage" 
-                        subtitle="We deliver indicators. You choose how to use them inside your firm."
+                        title="What You Can Prove" 
+                        subtitle="Turn every AI interaction into audit-ready evidence."
                     />
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -315,11 +316,11 @@
         );
 
         const Infrastructure = () => (
-            <section id="infrastructure" className="py-20 px-6 border-t border-black/10">
+            <section id="security" className="py-20 px-6 border-t border-black/10">
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-12">
                     <div className="md:w-1/3">
                         <SectionHeader 
-                            title="Infrastructure" 
+                            title="Security & Infrastructure" 
                             subtitle="Engineered for determinism, auditability, and reliability."
                         />
                         <div className="mt-8 p-6 bg-white/60 border border-black/5">
@@ -342,23 +343,23 @@
                     </div>
                     <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-8">
                         <div>
-                            <h4 className="font-bold mb-2 text-sm text-gray-900">Isolation Policy</h4>
+                            <h4 className="font-bold mb-2 text-sm text-gray-900">Policy Traceability</h4>
                             <p className="text-sm text-gray-600 leading-relaxed mb-6">
-                                Logical separation of research and production. No live code editing. Out-of-sample validation required.
+                                Every policy check is logged with full context: which rule, which input, which version, and the exact timestamp.
                             </p>
                             <h4 className="font-bold mb-2 text-sm text-gray-900">Versioning</h4>
                             <p className="text-sm text-gray-600 leading-relaxed">
-                                Semantic versioning (e.g., v2.1.0). Opt-in upgrades. No forced model upgrades; client-controlled adoption.
+                                Model versions, prompt versions, and policy versions are tracked independently. Replay works across any historical version.
                             </p>
                         </div>
                         <div>
                             <h4 className="font-bold mb-2 text-sm text-gray-900">System Fail-safes</h4>
                             <p className="text-sm text-gray-600 leading-relaxed mb-6">
-                                Redundant generation nodes. Heartbeat monitoring. Automatic halt state on integrity anomalies.
+                                Redundant capture nodes. Heartbeat monitoring. Automatic halt state on integrity anomalies.
                             </p>
-                            <h4 className="font-bold mb-2 text-sm text-gray-900">White Box Logic</h4>
+                            <h4 className="font-bold mb-2 text-sm text-gray-900">Signed Receipts + Hashes</h4>
                             <p className="text-sm text-gray-600 leading-relaxed">
-                                Logic documentation and attribution reports provided for licensed strategies.
+                                Every event is cryptographically signed. Tamper detection built in. Deterministic replay guaranteed.
                             </p>
                         </div>
                     </div>
@@ -367,31 +368,49 @@
         );
 
         const Strategies = () => (
-            <section id="strategies" className="py-20 px-6 border-t border-black/10 bg-black/5">
+            <section id="evidence-packs" className="py-20 px-6 border-t border-black/10 bg-black/5">
                 <div className="max-w-7xl mx-auto">
                     <SectionHeader 
-                        title="Models" 
-                        subtitle="Scientifically validated models engineered for professional workflows. Each engine includes full risk notes, performance metrics, and documentation during trial."
+                        title="What Oriphim Captures" 
+                        subtitle="Every AI interaction type becomes audit-ready evidence with full context, lineage, and export capability."
                     />
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <StrategyCard 
-                            title="Aizawa_"
-                            subTitle="Class: Intraday Chaos-Predictive"
-                            objective="Captures transient pockets of market predictability by embedding real-time price action into a chaotic phase space."
-                            methodology="Uses the Aizawa attractor to reconstruct market dynamics and a neural net to forecast directional bias during low-entropy windows."
-                            behavior="Short-horizon directional entries, sharp stop-loss enforcement, low latency."
-                            risk="Client-managed overlays; model includes confidence scoring and adaptive stop-loss ranges."
-                            horizon="Intraday (scalping to 3-hour holds)"
+                            title="LLM Output Receipts"
+                            subTitle="Event Type: Generative AI Calls"
+                            objective="Capture every prompt, response, and model configuration for complete AI output traceability."
+                            methodology="Logs prompt_version, model_version, temperature, tokens, latency, and input/output fingerprints with cryptographic signing."
+                            behavior="Real-time capture with policy checks for unsafe outputs, PII leaks, and content violations."
+                            risk="Full replay capability"
+                            horizon="Export pack ready"
                         />
                         <StrategyCard 
-                            title="Sinusoidal_"
-                            subTitle="Class: Oscillator-Pair Mean Reversion"
-                            objective="Trades temporary desynchronization between two tightly coupled instruments, most often FX pairs."
-                            methodology="Applies CEEMDAN + Hilbert transform to extract instantaneous phase and amplitude; trades phase slippage as convergence alpha."
-                            behavior="Low-volatility, delta-neutral positioning; trades 1–4 signals/day with high statistical conviction."
-                            risk="Tail risk disclosed per asset pair; hedgeable via linear instruments."
-                            horizon="Intraday to 48 hours"
+                            title="Automated Decisions"
+                            subTitle="Event Type: AI-Driven Actions"
+                            objective="Track approvals, denials, risk scores, and classification decisions made by AI systems."
+                            methodology="Captures decision logic, confidence scores, input features, and adverse action context with full lineage."
+                            behavior="Policy trace for regulatory compliance (FCRA, GDPR, etc.). Dispute-ready evidence bundles."
+                            risk="Audit-ready exports"
+                            horizon="Incident response ready"
+                        />
+                        <StrategyCard 
+                            title="Agent Actions"
+                            subTitle="Event Type: Multi-Step AI Workflows"
+                            objective="Reconstruct the full timeline of autonomous agent behavior including tool calls and retrieval context."
+                            methodology="Logs tool invocations, data retrievals, chain-of-thought steps, and intermediate states with temporal ordering."
+                            behavior="Full timeline reconstruction for debugging, auditing, and policy enforcement."
+                            risk="Deterministic replay"
+                            horizon="Complete lineage"
+                        />
+                        <StrategyCard 
+                            title="Incident Response"
+                            subTitle="Event Type: Flagged Events Feed"
+                            objective="Automatically surface high-risk AI events for security and compliance teams."
+                            methodology="Real-time flagging stream with configurable rules. Export evidence bundles for legal and security review."
+                            behavior="Integration with SIEM, Slack, PagerDuty. Automated evidence pack generation."
+                            risk="Compliance-ready"
+                            horizon="Export in seconds"
                         />
                     </div>
                 </div>
@@ -399,25 +418,39 @@
         );
 
         const Whitepapers = () => (
-            <section id="whitepapers" className="py-20 px-6 border-t border-black/10">
+            <section className="py-20 px-6 border-t border-black/10">
                 <div className="max-w-7xl mx-auto">
                     <SectionHeader 
-                        title="Whitepapers" 
-                        subtitle="Deep dives into market microstructure and signal logic."
+                        title="Documentation & Evidence Specs" 
+                        subtitle="Technical specifications for evidence schemas, export formats, and policy engine architecture."
                     />
                     
                     <div className="flex flex-col gap-4 border-t border-black/10">
-                        <a href="https://docs.google.com/document/d/1PmMjdoenbgV0_wc7Zda4MmqKLmjE4IYnM6nMu_m3pXE/edit?tab=t.0" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between border-b border-black/10 py-6 hover:bg-white/40 transition-colors">
+                        <a href="#" className="group flex items-center justify-between border-b border-black/10 py-6 hover:bg-white/40 transition-colors">
                             <div className="flex flex-col">
-                                <span className="text-xl font-bold text-gray-900 group-hover:underline underline-offset-4 decoration-1">Aizawa_ Whitepaper</span>
-                                <span className="text-xs font-mono text-gray-500 mt-1">View Document</span>
+                                <span className="text-xl font-bold text-gray-900 group-hover:underline underline-offset-4 decoration-1">Evidence Schema v1</span>
+                                <span className="text-xs font-mono text-gray-500 mt-1">JSON Schema • Coming Soon</span>
                             </div>
                             <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
                         </a>
                         <a href="#" className="group flex items-center justify-between border-b border-black/10 py-6 hover:bg-white/40 transition-colors">
                             <div className="flex flex-col">
-                                <span className="text-xl font-bold text-gray-900 group-hover:underline underline-offset-4 decoration-1">Sinusoidal_ Whitepaper</span>
-                                <span className="text-xs font-mono text-gray-500 mt-1">PDF // 1.8MB</span>
+                                <span className="text-xl font-bold text-gray-900 group-hover:underline underline-offset-4 decoration-1">Export Pack Format (PDF/JSON)</span>
+                                <span className="text-xs font-mono text-gray-500 mt-1">Specification • Coming Soon</span>
+                            </div>
+                            <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
+                        </a>
+                        <a href="#" className="group flex items-center justify-between border-b border-black/10 py-6 hover:bg-white/40 transition-colors">
+                            <div className="flex flex-col">
+                                <span className="text-xl font-bold text-gray-900 group-hover:underline underline-offset-4 decoration-1">Policy Rules Engine</span>
+                                <span className="text-xs font-mono text-gray-500 mt-1">Architecture Guide • Coming Soon</span>
+                            </div>
+                            <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
+                        </a>
+                        <a href="#" className="group flex items-center justify-between border-b border-black/10 py-6 hover:bg-white/40 transition-colors">
+                            <div className="flex flex-col">
+                                <span className="text-xl font-bold text-gray-900 group-hover:underline underline-offset-4 decoration-1">Replay & Deterministic Execution</span>
+                                <span className="text-xs font-mono text-gray-500 mt-1">Technical Notes • Coming Soon</span>
                             </div>
                             <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
                         </a>
@@ -526,19 +559,19 @@
                 <section id="contact" className="py-24 px-6 border-t border-black/10">
                     <div className="max-w-3xl mx-auto">
                         <div className="text-center mb-12">
-                            <h2 className="text-2xl font-bold mb-2 text-gray-900">Submit Inquiry</h2>
-                            <p className="text-gray-600 text-sm">Operational and compliance review criteria apply.</p>
+                            <h2 className="text-2xl font-bold mb-2 text-gray-900">Request Pilot Access</h2>
+                            <p className="text-gray-600 text-sm">First export in 7 days or you don't pay. Limited pilot slots available.</p>
                         </div>
                         
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <input type="hidden" name="access_key" value="2e6f8de3-108b-4343-8b29-5add3e4abc6f" />
-                            <input type="hidden" name="subject" value="New ORIPHIM Inquiry" />
+                            <input type="hidden" name="subject" value="New ORIPHIM AuditPipe Pilot Request" />
                             <input type="hidden" name="from_name" value="ORIPHIM Website" />
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-1">
-                                    <label className="text-xs font-bold uppercase tracking-wide text-gray-500">Institution Entity</label>
-                                    <input required type="text" name="institution" className="w-full bg-white border border-gray-300 p-3 text-sm focus:outline-none focus:border-black rounded-none transition-colors" />
+                                    <label className="text-xs font-bold uppercase tracking-wide text-gray-500">Company</label>
+                                    <input required type="text" name="company" className="w-full bg-white border border-gray-300 p-3 text-sm focus:outline-none focus:border-black rounded-none transition-colors" />
                                 </div>
                                 <div className="space-y-1">
                                     <label className="text-xs font-bold uppercase tracking-wide text-gray-500">Work Email</label>
@@ -548,38 +581,42 @@
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-1">
-                                    <label className="text-xs font-bold uppercase tracking-wide text-gray-500">Capital Base</label>
-                                    <select required name="capital_base" className="w-full bg-white border border-gray-300 p-3 text-sm focus:outline-none focus:border-black rounded-none appearance-none transition-colors">
-                                        <option value="" disabled selected>Select Range</option>
-                                        <option value="<10M">Under $10M</option>
-                                        <option value="10M-50M">$10M - $50M</option>
-                                        <option value="50M-200M">$50M - $200M</option>
-                                        <option value="200M+">$200M+</option>
-                                    </select>
+                                    <label className="text-xs font-bold uppercase tracking-wide text-gray-500">Role</label>
+                                    <input required type="text" name="role" className="w-full bg-white border border-gray-300 p-3 text-sm focus:outline-none focus:border-black rounded-none transition-colors" placeholder="e.g., CTO, Head of Compliance" />
                                 </div>
                                 <div className="space-y-1">
-                                    <label className="text-xs font-bold uppercase tracking-wide text-gray-500">Integration Standard</label>
-                                    <select required name="integration" className="w-full bg-white border border-gray-300 p-3 text-sm focus:outline-none focus:border-black rounded-none appearance-none transition-colors">
-                                        <option value="" disabled selected>Select Protocol</option>
-                                        <option value="API">REST API</option>
-                                        <option value="FIX">FIX 4.4/5.0</option>
-                                        <option value="WEBHOOK">Webhook</option>
-                                        <option value="SFTP">SFTP / Flat File</option>
-                                    </select>
+                                    <label className="text-xs font-bold uppercase tracking-wide text-gray-500">Industry</label>
+                                    <input required type="text" name="industry" className="w-full bg-white border border-gray-300 p-3 text-sm focus:outline-none focus:border-black rounded-none transition-colors" placeholder="e.g., Fintech, Healthcare" />
                                 </div>
                             </div>
                             
                             <div className="space-y-1">
-                                <label className="text-xs font-bold uppercase tracking-wide text-gray-500">Inquiry Context</label>
-                                <textarea required rows="4" name="message" className="w-full bg-white border border-gray-300 p-3 text-sm focus:outline-none focus:border-black rounded-none transition-colors"></textarea>
+                                <label className="text-xs font-bold uppercase tracking-wide text-gray-500">Where does AI run today?</label>
+                                <input required type="text" name="ai_systems" className="w-full bg-white border border-gray-300 p-3 text-sm focus:outline-none focus:border-black rounded-none transition-colors" placeholder="e.g., Production chatbot, internal tooling, automated decisions" />
+                            </div>
+
+                            <div className="space-y-1">
+                                <label className="text-xs font-bold uppercase tracking-wide text-gray-500">Biggest audit risk</label>
+                                <textarea required rows="4" name="audit_risk" className="w-full bg-white border border-gray-300 p-3 text-sm focus:outline-none focus:border-black rounded-none transition-colors" placeholder="What keeps you up at night regarding AI compliance?"></textarea>
+                            </div>
+
+                            <div className="space-y-1">
+                                <label className="text-xs font-bold uppercase tracking-wide text-gray-500">Preferred Integration</label>
+                                <select required name="integration" className="w-full bg-white border border-gray-300 p-3 text-sm focus:outline-none focus:border-black rounded-none appearance-none transition-colors">
+                                    <option value="" disabled selected>Select integration method</option>
+                                    <option value="sdk">SDK (Python/Node)</option>
+                                    <option value="api">API Gateway</option>
+                                    <option value="webhook">Webhook</option>
+                                    <option value="not_sure">Not sure yet</option>
+                                </select>
                             </div>
 
                             <div className="pt-4 text-center md:text-left">
                                 <button type="submit" disabled={isSubmitting} className="w-full md:w-auto px-12 py-4 bg-[#1a1a1a] text-white font-medium tracking-widest text-xs hover:bg-[#333] transition-colors uppercase disabled:opacity-50 disabled:cursor-not-allowed">
-                                    {isSubmitting ? 'Submitting...' : 'Submit Inquiry'}
+                                    {isSubmitting ? 'Submitting...' : 'Submit Pilot Request'}
                                 </button>
                                 <p className="text-[10px] text-gray-500 mt-4 max-w-sm">
-                                    Oriphim provides market indicators only. We do not execute trades or provide investment advice.
+                                    Oriphim provides AI evidence logging and exports. Not legal advice.
                                 </p>
                             </div>
                         </form>
@@ -592,7 +629,7 @@
             <footer className="py-12 px-6 border-t border-black/10 text-center md:text-left">
                 <div className="max-w-7xl mx-auto flex flex-col items-center md:items-start text-[10px] text-gray-500 font-mono tracking-wider">
                     <div className="mb-2 text-gray-400">
-                        Market indicators only. Not investment advice. No trade execution. No brokerage access.
+                        Oriphim provides AI evidence logging and exports. Not legal advice. Customer controls enforcement and compliance decisions.
                     </div>
                     <div className="w-full flex flex-col md:flex-row justify-between items-center">
                         <div className="mb-4 md:mb-0">
