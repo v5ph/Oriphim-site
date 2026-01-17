@@ -232,23 +232,25 @@
                     />
                     
                     <div className="bg-white/60 p-8 border border-black/10 shadow-sm mb-8">
-                        <div className="text-[10px] font-mono uppercase text-gray-400 mb-6 tracking-widest">Indicator Delivery Path</div>
+                        <div className="text-[10px] font-mono uppercase text-gray-400 mb-6 tracking-widest">Evidence Pipeline</div>
                         <div className="flex flex-col md:flex-row gap-4 md:gap-0 justify-between">
-                            <ArchitectureNode sub="Source" label="Oriphim Engine" />
-                            <div className="hidden md:flex flex-col justify-center flex-1 px-2">
-                                <div className="h-px bg-black/10 w-full relative">
-                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-[9px] font-mono bg-white/80 px-2 text-gray-400">API Delivery</div>
-                                </div>
-                            </div>
-                            <ArchitectureNode sub="Transport" label="Delivery API / Webhook Router" />
+                            <ArchitectureNode sub="AI Calls" label="LLMs / Models / Agents" />
                             <div className="hidden md:flex flex-col justify-center flex-1 px-2">
                                 <div className="h-px bg-black/10 w-full"></div>
                             </div>
-                            <ArchitectureNode sub="Ingestion" label="Client OMS/EMS" />
+                            <ArchitectureNode sub="Capture" label="SDK / Gateway" />
                             <div className="hidden md:flex flex-col justify-center flex-1 px-2">
                                 <div className="h-px bg-black/10 w-full"></div>
                             </div>
-                            <ArchitectureNode sub="Execution" label="Market / Broker" isLast={true} />
+                            <ArchitectureNode sub="Storage" label="Evidence Store (immutable)" />
+                            <div className="hidden md:flex flex-col justify-center flex-1 px-2">
+                                <div className="h-px bg-black/10 w-full"></div>
+                            </div>
+                            <ArchitectureNode sub="Policy" label="Policy Checks" />
+                            <div className="hidden md:flex flex-col justify-center flex-1 px-2">
+                                <div className="h-px bg-black/10 w-full"></div>
+                            </div>
+                            <ArchitectureNode sub="Output" label="Exports + Replay" isLast={true} />
                         </div>
                     </div>
 
@@ -307,7 +309,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div className="flex items-center justify-center border-[0.5px] border-black/5 bg-[#1a1a1a] p-8">
+                        <div className="flex items-center justify-center bg-[#1a1a1a] p-8">
                             <img src="/assets/images/theCUBE.png" alt="Oriphim" className="max-w-full h-auto" />
                         </div>
                     </div>
@@ -367,97 +369,247 @@
             </section>
         );
 
-        const Strategies = () => (
-            <section id="evidence-packs" className="py-20 px-6 border-t border-black/10 bg-black/5">
-                <div className="max-w-7xl mx-auto">
-                    <SectionHeader 
-                        title="What Oriphim Captures" 
-                        subtitle="Every AI interaction type becomes audit-ready evidence with full context, lineage, and export capability."
-                    />
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <StrategyCard 
-                            title="LLM Output Receipts"
-                            subTitle="Event Type: Generative AI Calls"
-                            objective="Capture every prompt, response, and model configuration for complete AI output traceability."
-                            methodology="Logs prompt_version, model_version, temperature, tokens, latency, and input/output fingerprints with cryptographic signing."
-                            behavior="Real-time capture with policy checks for unsafe outputs, PII leaks, and content violations."
-                            risk="Full replay capability"
-                            horizon="Export pack ready"
-                        />
-                        <StrategyCard 
-                            title="Automated Decisions"
-                            subTitle="Event Type: AI-Driven Actions"
-                            objective="Track approvals, denials, risk scores, and classification decisions made by AI systems."
-                            methodology="Captures decision logic, confidence scores, input features, and adverse action context with full lineage."
-                            behavior="Policy trace for regulatory compliance (FCRA, GDPR, etc.). Dispute-ready evidence bundles."
-                            risk="Audit-ready exports"
-                            horizon="Incident response ready"
-                        />
-                        <StrategyCard 
-                            title="Agent Actions"
-                            subTitle="Event Type: Multi-Step AI Workflows"
-                            objective="Reconstruct the full timeline of autonomous agent behavior including tool calls and retrieval context."
-                            methodology="Logs tool invocations, data retrievals, chain-of-thought steps, and intermediate states with temporal ordering."
-                            behavior="Full timeline reconstruction for debugging, auditing, and policy enforcement."
-                            risk="Deterministic replay"
-                            horizon="Complete lineage"
-                        />
-                        <StrategyCard 
-                            title="Incident Response"
-                            subTitle="Event Type: Flagged Events Feed"
-                            objective="Automatically surface high-risk AI events for security and compliance teams."
-                            methodology="Real-time flagging stream with configurable rules. Export evidence bundles for legal and security review."
-                            behavior="Integration with SIEM, Slack, PagerDuty. Automated evidence pack generation."
-                            risk="Compliance-ready"
-                            horizon="Export in seconds"
-                        />
-                    </div>
-                </div>
-            </section>
-        );
+        const Strategies = () => {
+            const [showReplayModal, setShowReplayModal] = useState(false);
+            
+            const eventData = {
+                event_id: "evt_2k4j9m3n7p1q",
+                customer_id: "cust_acme_prod",
+                timestamp: "2026-01-17T14:23:41.291Z",
+                status: "COMPLETED",
+                risk_score: 0.12,
+                model_version: "gpt-4-turbo-2024-04-09",
+                prompt_version: "support_v3.2.1",
+                runtime: "2.34s",
+                latency_ms: 2340,
+                input_summary: "User inquiry: refund request for order #A8472",
+                input_fingerprint: "sha256:a7f3c9d2e1b4...",
+                pii_detected: true,
+                output_summary: "Generated response: refund policy explanation + next steps",
+                output_fingerprint: "sha256:b2e8f1a6c3d7...",
+                policy_checks: [
+                    { name: "PII exposure", status: "PASS" },
+                    { name: "Unsafe instruction", status: "PASS" },
+                    { name: "Regulatory rule: adverse impact", status: "PASS" }
+                ],
+                data_sources: ["customer_db", "order_history", "refund_policy_v2"],
+                feature_receipt_hash: "sha256:9c3f7a2d1e8b...",
+                trace_hash: "sha256:4d8e2b9f6c1a..."
+            };
 
-        const Whitepapers = () => (
-            <section className="py-20 px-6 border-t border-black/10">
-                <div className="max-w-7xl mx-auto">
-                    <SectionHeader 
-                        title="Documentation & Evidence Specs" 
-                        subtitle="Technical specifications for evidence schemas, export formats, and policy engine architecture."
-                    />
-                    
-                    <div className="flex flex-col gap-4 border-t border-black/10">
-                        <a href="#" className="group flex items-center justify-between border-b border-black/10 py-6 hover:bg-white/40 transition-colors">
-                            <div className="flex flex-col">
-                                <span className="text-xl font-bold text-gray-900 group-hover:underline underline-offset-4 decoration-1">Evidence Schema v1</span>
-                                <span className="text-xs font-mono text-gray-500 mt-1">JSON Schema • Coming Soon</span>
+            const downloadJSON = () => {
+                const dataStr = JSON.stringify(eventData, null, 2);
+                const dataBlob = new Blob([dataStr], { type: 'application/json' });
+                const url = URL.createObjectURL(dataBlob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `event_${eventData.event_id}.json`;
+                link.click();
+                URL.revokeObjectURL(url);
+            };
+
+            const generatePDF = () => {
+                alert('Evidence pack generated! (Demo: PDF generation would happen here)');
+            };
+
+            return (
+                <section id="evidence-packs" className="py-20 px-6 border-t border-black/10 bg-black/5">
+                    <div className="max-w-5xl mx-auto">
+                        <SectionHeader 
+                            title="Event Detail View" 
+                            subtitle="Every AI action captured as a complete, audit-ready evidence card with cryptographic verification."
+                        />
+                        
+                        <div className="bg-white border border-black/10 shadow-lg">
+                            {/* Event Header */}
+                            <div className="border-b border-black/10 bg-gray-50 p-6">
+                                <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                                    <div>
+                                        <div className="text-[10px] font-mono text-gray-500 uppercase mb-1">Event ID</div>
+                                        <div className="font-mono text-xs text-gray-900">{eventData.event_id}</div>
+                                    </div>
+                                    <div>
+                                        <div className="text-[10px] font-mono text-gray-500 uppercase mb-1">Customer</div>
+                                        <div className="font-mono text-xs text-gray-900">{eventData.customer_id}</div>
+                                    </div>
+                                    <div>
+                                        <div className="text-[10px] font-mono text-gray-500 uppercase mb-1">Timestamp</div>
+                                        <div className="font-mono text-xs text-gray-900">{new Date(eventData.timestamp).toLocaleString()}</div>
+                                    </div>
+                                    <div>
+                                        <div className="text-[10px] font-mono text-gray-500 uppercase mb-1">Status</div>
+                                        <div className="font-mono text-xs text-green-700 font-bold">{eventData.status}</div>
+                                    </div>
+                                    <div>
+                                        <div className="text-[10px] font-mono text-gray-500 uppercase mb-1">Risk Score</div>
+                                        <div className="font-mono text-xs text-gray-900">{eventData.risk_score}</div>
+                                    </div>
+                                </div>
                             </div>
-                            <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
-                        </a>
-                        <a href="#" className="group flex items-center justify-between border-b border-black/10 py-6 hover:bg-white/40 transition-colors">
-                            <div className="flex flex-col">
-                                <span className="text-xl font-bold text-gray-900 group-hover:underline underline-offset-4 decoration-1">Export Pack Format (PDF/JSON)</span>
-                                <span className="text-xs font-mono text-gray-500 mt-1">Specification • Coming Soon</span>
+
+                            <div className="p-6 space-y-6">
+                                {/* Model Block */}
+                                <div className="border-l-2 border-oriphim-accent pl-4">
+                                    <h3 className="text-xs font-bold uppercase tracking-wide text-gray-900 mb-3">Model Configuration</h3>
+                                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+                                        <div>
+                                            <span className="text-gray-500 font-mono">model_version:</span>
+                                            <div className="font-mono text-gray-900 mt-1">{eventData.model_version}</div>
+                                        </div>
+                                        <div>
+                                            <span className="text-gray-500 font-mono">prompt_version:</span>
+                                            <div className="font-mono text-gray-900 mt-1">{eventData.prompt_version}</div>
+                                        </div>
+                                        <div>
+                                            <span className="text-gray-500 font-mono">runtime:</span>
+                                            <div className="font-mono text-gray-900 mt-1">{eventData.runtime}</div>
+                                        </div>
+                                        <div>
+                                            <span className="text-gray-500 font-mono">latency_ms:</span>
+                                            <div className="font-mono text-gray-900 mt-1">{eventData.latency_ms}</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Input Block */}
+                                <div className="border-l-2 border-oriphim-accent pl-4">
+                                    <h3 className="text-xs font-bold uppercase tracking-wide text-gray-900 mb-3">Input</h3>
+                                    <div className="space-y-2 text-xs">
+                                        <div>
+                                            <span className="text-gray-500 font-mono">input_summary:</span>
+                                            <div className="text-gray-900 mt-1">{eventData.input_summary}</div>
+                                        </div>
+                                        <div>
+                                            <span className="text-gray-500 font-mono">input_fingerprint:</span>
+                                            <div className="font-mono text-gray-900 mt-1">{eventData.input_fingerprint}</div>
+                                        </div>
+                                        <div>
+                                            <span className="text-gray-500 font-mono">PII_detected:</span>
+                                            <span className={`ml-2 font-mono ${eventData.pii_detected ? 'text-orange-600' : 'text-green-600'}`}>
+                                                {eventData.pii_detected ? 'true' : 'false'}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Output Block */}
+                                <div className="border-l-2 border-oriphim-accent pl-4">
+                                    <h3 className="text-xs font-bold uppercase tracking-wide text-gray-900 mb-3">Output</h3>
+                                    <div className="space-y-2 text-xs">
+                                        <div>
+                                            <span className="text-gray-500 font-mono">output_summary:</span>
+                                            <div className="text-gray-900 mt-1">{eventData.output_summary}</div>
+                                        </div>
+                                        <div>
+                                            <span className="text-gray-500 font-mono">output_fingerprint:</span>
+                                            <div className="font-mono text-gray-900 mt-1">{eventData.output_fingerprint}</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Policy Checks Block */}
+                                <div className="border-l-2 border-oriphim-accent pl-4">
+                                    <h3 className="text-xs font-bold uppercase tracking-wide text-gray-900 mb-3">Policy Checks</h3>
+                                    <div className="space-y-2">
+                                        {eventData.policy_checks.map((check, idx) => (
+                                            <div key={idx} className="flex items-center justify-between text-xs bg-gray-50 p-2 border border-gray-200">
+                                                <span className="font-mono text-gray-700">{check.name}</span>
+                                                <span className={`font-mono font-bold ${check.status === 'PASS' ? 'text-green-700' : 'text-red-700'}`}>
+                                                    {check.status}
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Lineage Block */}
+                                <div className="border-l-2 border-oriphim-accent pl-4">
+                                    <h3 className="text-xs font-bold uppercase tracking-wide text-gray-900 mb-3">Lineage</h3>
+                                    <div className="space-y-2 text-xs">
+                                        <div>
+                                            <span className="text-gray-500 font-mono">data_sources:</span>
+                                            <div className="font-mono text-gray-900 mt-1">
+                                                [{eventData.data_sources.map(s => `"${s}"`).join(', ')}]
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <span className="text-gray-500 font-mono">feature_receipt_hash:</span>
+                                            <div className="font-mono text-gray-900 mt-1">{eventData.feature_receipt_hash}</div>
+                                        </div>
+                                        <div>
+                                            <span className="text-gray-500 font-mono">trace_hash:</span>
+                                            <div className="font-mono text-gray-900 mt-1">{eventData.trace_hash}</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Action Buttons */}
+                                <div className="pt-4 border-t border-gray-200 flex flex-col sm:flex-row gap-3">
+                                    <button 
+                                        onClick={() => setShowReplayModal(true)}
+                                        className="flex-1 px-6 py-3 bg-black text-white text-xs font-medium tracking-wide uppercase hover:bg-gray-800 transition-colors"
+                                    >
+                                        Replay Output
+                                    </button>
+                                    <button 
+                                        onClick={generatePDF}
+                                        className="flex-1 px-6 py-3 border border-black text-black text-xs font-medium tracking-wide uppercase hover:bg-black hover:text-white transition-colors"
+                                    >
+                                        Generate Evidence Pack (PDF)
+                                    </button>
+                                    <button 
+                                        onClick={downloadJSON}
+                                        className="flex-1 px-6 py-3 border border-black text-black text-xs font-medium tracking-wide uppercase hover:bg-black hover:text-white transition-colors"
+                                    >
+                                        Download JSON
+                                    </button>
+                                </div>
                             </div>
-                            <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
-                        </a>
-                        <a href="#" className="group flex items-center justify-between border-b border-black/10 py-6 hover:bg-white/40 transition-colors">
-                            <div className="flex flex-col">
-                                <span className="text-xl font-bold text-gray-900 group-hover:underline underline-offset-4 decoration-1">Policy Rules Engine</span>
-                                <span className="text-xs font-mono text-gray-500 mt-1">Architecture Guide • Coming Soon</span>
+                        </div>
+
+                        {/* Replay Modal */}
+                        {showReplayModal && (
+                            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4" onClick={() => setShowReplayModal(false)}>
+                                <div className="bg-white max-w-2xl w-full p-6 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+                                    <div className="flex justify-between items-center mb-4 pb-4 border-b border-gray-200">
+                                        <h3 className="text-lg font-bold text-gray-900">Output Replay</h3>
+                                        <button onClick={() => setShowReplayModal(false)} className="text-gray-500 hover:text-black text-2xl leading-none">&times;</button>
+                                    </div>
+                                    <div className="space-y-3 text-sm">
+                                        <div>
+                                            <div className="text-xs font-mono text-gray-500 uppercase mb-1">Model Version</div>
+                                            <div className="font-mono text-gray-900">{eventData.model_version}</div>
+                                        </div>
+                                        <div>
+                                            <div className="text-xs font-mono text-gray-500 uppercase mb-1">Prompt Version</div>
+                                            <div className="font-mono text-gray-900">{eventData.prompt_version}</div>
+                                        </div>
+                                        <div>
+                                            <div className="text-xs font-mono text-gray-500 uppercase mb-1">Output</div>
+                                            <div className="bg-gray-50 p-4 border border-gray-200 font-mono text-xs text-gray-900">
+                                                {eventData.output_summary}
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="text-xs font-mono text-gray-500 uppercase mb-1">Output Fingerprint</div>
+                                            <div className="font-mono text-xs text-gray-900">{eventData.output_fingerprint}</div>
+                                        </div>
+                                    </div>
+                                    <div className="mt-6 pt-4 border-t border-gray-200">
+                                        <button 
+                                            onClick={() => setShowReplayModal(false)}
+                                            className="w-full px-6 py-3 bg-black text-white text-xs font-medium tracking-wide uppercase hover:bg-gray-800 transition-colors"
+                                        >
+                                            Close
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                            <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
-                        </a>
-                        <a href="#" className="group flex items-center justify-between border-b border-black/10 py-6 hover:bg-white/40 transition-colors">
-                            <div className="flex flex-col">
-                                <span className="text-xl font-bold text-gray-900 group-hover:underline underline-offset-4 decoration-1">Replay & Deterministic Execution</span>
-                                <span className="text-xs font-mono text-gray-500 mt-1">Technical Notes • Coming Soon</span>
-                            </div>
-                            <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
-                        </a>
+                        )}
                     </div>
-                </div>
-            </section>
-        );
+                </section>
+            );
+        };
 
         const Engagement = () => (
             <section id="licensing" className="py-20 px-6 border-t border-black/10 bg-[#111] text-[#e4e2dd]">
@@ -654,7 +806,6 @@
                     <SignalUsage />
                     <Infrastructure />
                     <Strategies />
-                    <Whitepapers />
                     <Engagement />
                     <Contact />
                     <Footer />
