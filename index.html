@@ -3,479 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ORIPHIM | Receipts for Every AI Decision</title>
-    
-    <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/favicon-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/assets/icons/favicon-512x512.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
-    
-    <!-- Fonts: Inter for UI, JetBrains Mono for Data -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Rajdhani:wght@600;700&family=Zen+Old+Mincho:wght@600;700;900&display=swap" rel="stylesheet">
-    
-    <!-- React & ReactDOM -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    
-    <!-- Babel -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    
-    <!-- Tailwind CSS -->
+    <title>ORIPHIM | Evidence Sovereignty</title>
+    <meta name="description" content="Receipts for every AI decision. Oriphim generates replayable audit trails, lineage, and 1-click evidence exports for AI systems in production.">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        oriphim: {
-                            bg: '#e4e2dd',
-                            text: '#0a0a0a',
-                            subtext: '#333333',
-                            accent: '#8a1c1c',
-                            border: '#1a1a1a',
-                            lightBorder: '#a0a0a0'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    spacing: {
-                        '128': '32rem',
-                    }
-                }
-            }
-        }
-    </script>
-
+    <!-- SWAPPED FONT: Space Grotesk for bolder, more technical feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #e4e2dd;
-            color: #0a0a0a;
-            -webkit-font-smoothing: antialiased;
+            /* Applied Space Grotesk */
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #050505;
+            color: #e5e5e5;
+            overflow-x: hidden;
         }
-        
-        .mono-t {
+        .mono {
             font-family: 'JetBrains Mono', monospace;
-            letter-spacing: -0.02em;
         }
-
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #e4e2dd;
+            background: #0a0a0a;
         }
         ::-webkit-scrollbar-thumb {
             background: #333;
-            border: 2px solid #e4e2dd;
+            border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #5a1212;
+            background: #555;
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Subtle Grid Background */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
         }
 
-        .architecture-line {
-            position: relative;
-        }
-        .architecture-line::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 100%;
-            width: 100%;
-            height: 1px;
-            background-color: #000;
-            opacity: 0.3;
-            z-index: 1;
-        }
-        .last-node::after {
-            display: none;
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
     </style>
 </head>
-<body>
-    <div id="root"></div>
+<body class="antialiased bg-grid relative">
 
-    <script type="text/babel">
-        const { useState, useEffect } = React;
-
-        // --- Icons ---
-        const TerminalIcon = () => (
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" strokeLinejoin="miter"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
-        );
-        const ActivityIcon = () => (
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" strokeLinejoin="miter"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-        );
-        const ShieldIcon = () => (
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" strokeLinejoin="miter"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-        );
-        const ServerIcon = () => (
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" strokeLinejoin="miter"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
-        );
-        const ArrowRight = () => (
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        );
-
-        // --- Components ---
-
-        const Nav = () => (
-            <nav className="fixed top-0 w-full z-50 bg-[#e4e2dd]/95 backdrop-blur-sm border-b border-black/10 py-4">
-                <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-                    <div className="text-2xl text-gray-900 flex items-baseline select-none">
-                        <span style={{ fontFamily: "'Rajdhani', sans-serif", fontWeight: 700 }}>Ori</span>
-                        <span style={{ fontFamily: "'Zen Old Mincho', serif", fontWeight: 700 }} className="px-[1px]">φ</span>
-                        <span style={{ fontFamily: "'Rajdhani', sans-serif", fontWeight: 700 }}>m</span>
-                    </div>
-                    <div className="hidden md:flex space-x-8 text-xs font-medium tracking-wide text-gray-600">
-                        <a href="#product" className="hover:text-black transition-colors">PRODUCT</a>
-                        <a href="#how-it-works" className="hover:text-black transition-colors">HOW IT WORKS</a>
-                        <a href="#evidence-packs" className="hover:text-black transition-colors">EVIDENCE PACKS</a>
-                        <a href="#security" className="hover:text-black transition-colors">SECURITY</a>
-                        <a href="#pricing" className="text-oriphim-accent hover:text-black transition-colors">PRICING / PILOT</a>
-                        <a href="#contact" className="hover:text-black transition-colors">CONTACT</a>
-                    </div>
-                </div>
-            </nav>
-        );
-
-        const SectionHeader = ({ title, subtitle }) => (
-            <div className="mb-12 border-l border-oriphim-accent/80 pl-4">
-                <h2 className="text-xl font-bold uppercase tracking-wide mb-2 text-gray-900">{title}</h2>
-                {subtitle && <p className="text-gray-600 max-w-2xl text-sm leading-relaxed">{subtitle}</p>}
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 left-0 border-b border-white/5 glass-panel">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <!-- Increased weight for logo -->
+                <span class="mono font-bold tracking-tighter text-lg text-white">ORIPHIM</span>
             </div>
-        );
-
-        const ArchitectureNode = ({ label, sub, isLast = false }) => (
-            <div className={`flex-1 min-w-[140px] relative ${!isLast ? 'md:border-r md:border-black/10' : ''} p-4 bg-white/40 border border-black/5`}>
-                <div className="text-[10px] font-mono text-gray-500 uppercase mb-1 tracking-wider">{sub}</div>
-                <div className="font-medium text-sm text-gray-900">{label}</div>
+            <div class="hidden md:flex items-center gap-8 mono text-xs text-gray-400">
+                <a href="#product" class="hover:text-white transition-colors">PRODUCT</a>
+                <a href="#benefits" class="hover:text-white transition-colors">WHY ORIPHIM</a>
+                <a href="#pilot" class="hover:text-white transition-colors">PILOT PROGRAM</a>
+                <a href="#access" class="border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition-all">REQUEST ACCESS</a>
             </div>
-        );
+        </div>
+    </nav>
 
-        const StrategyCard = ({ title, subTitle, objective, methodology, behavior, risk, horizon }) => (
-            <div className="bg-white/30 border border-black/5 p-6 hover:border-black/20 transition-colors duration-300 h-full flex flex-col">
-                <h3 className="font-bold text-lg mb-1 text-gray-900">{title}</h3>
-                {subTitle && <div className="text-xs font-mono text-gray-500 mb-4">{subTitle}</div>}
-                
-                <div className="space-y-4 flex-grow">
-                    <div>
-                        <span className="block text-[10px] font-mono text-gray-500 uppercase tracking-wider mb-1">Objective</span>
-                        <p className="text-sm leading-relaxed text-gray-700">{objective}</p>
-                    </div>
-                    {methodology && (
-                        <div>
-                            <span className="block text-[10px] font-mono text-gray-500 uppercase tracking-wider mb-1">Methodology</span>
-                            <p className="text-sm leading-relaxed text-gray-700">{methodology}</p>
-                        </div>
-                    )}
-                    <div>
-                        <span className="block text-[10px] font-mono text-gray-500 uppercase tracking-wider mb-1">Behavior</span>
-                        <p className="text-sm leading-relaxed text-gray-700">{behavior}</p>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4 pt-2 border-t border-black/5 mt-auto">
-                        <div className="pt-2">
-                            <span className="block text-[10px] font-mono text-gray-500 uppercase tracking-wider">Risk Profile</span>
-                            <span className="text-sm text-gray-700">{risk}</span>
-                        </div>
-                        <div className="pt-2">
-                            <span className="block text-[10px] font-mono text-gray-500 uppercase tracking-wider">Horizon</span>
-                            <span className="text-sm text-gray-700">{horizon}</span>
-                        </div>
-                    </div>
+    <!-- Hero Section -->
+    <section class="relative z-10 min-h-screen flex items-center justify-center pt-20">
+        <div class="max-w-7xl mx-auto px-6 w-full">
+            <div class="max-w-4xl">
+                <p class="mono text-orange-500 mb-4 tracking-widest text-xs uppercase">System Status: Online // Evidence Capture Active</p>
+                <!-- Changed font-light to font-bold for impact -->
+                <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-8 text-white">
+                    Receipts for every AI decision. <br>
+                    <span class="font-bold glow-text">Replayable audit trails for production AI.</span>
+                </h1>
+                <!-- Changed font-light to font-normal -->
+                <p class="text-xl md:text-2xl text-gray-400 font-normal max-w-2xl leading-relaxed mb-12">
+                    Oriphim generates immutable evidence for every AI output—inputs, outputs, model + prompt versions, policy checks, and lineage—then exports audit-ready packages in one click. Deploy in days. Prove incidents in minutes.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button onclick="scrollToSection('pilot')" class="mono bg-white text-black px-8 py-4 font-bold hover:bg-gray-200 transition-colors border border-white">
+                        REQUEST PILOT
+                    </button>
+                    <button onclick="scrollToSection('product')" class="mono bg-transparent text-white px-8 py-4 border border-white/20 hover:border-white transition-colors">
+                        VIEW DEMO FLOW
+                    </button>
                 </div>
             </div>
-        );
+        </div>
+    </section>
 
-        const Hero = () => (
-            <section className="min-h-[85vh] flex flex-col justify-center pt-24 pb-12 px-6 max-w-7xl mx-auto">
-                <div className="max-w-4xl">
-                    <div className="inline-block mb-6 text-[11px] font-mono uppercase tracking-widest text-gray-500">
-                        2026
-                    </div>
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-[1.1] mb-8 text-black/90">
-                        Receipts for every AI decision.
-                    </h1>
-                    <p className="text-lg text-gray-700 max-w-2xl leading-relaxed mb-10 border-l border-gray-300 pl-6">
-                        Oriphim generates a replayable audit trail for AI outputs — inputs, outputs, model & prompt versions, policy checks, risk flags, and 1-click exports (PDF/JSON). <br/>
-                        <span className="block mt-2 text-sm font-mono text-gray-600">
-                            Built for compliance, incident response, and AI governance. Oriphim logs evidence — you control policy and enforcement.
-                        </span>
+    <!-- Product / Capabilities -->
+    <section id="product" class="relative z-10 py-24 border-t border-white/5 bg-black/20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+                <div>
+                    <h2 class="text-3xl font-bold mb-2">What Oriphim Delivers</h2>
+                    <div class="h-1 w-20 bg-orange-900"></div>
+                </div>
+                <p class="mono text-xs text-gray-500 mt-4 md:mt-0">IMMUTABLE // TRACEABLE // EXPORTABLE</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-panel p-8 hover:bg-white/5 transition-all group">
+                    <div class="mono text-4xl text-gray-700 mb-6 group-hover:text-white transition-colors">01</div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Evidence Capture</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        Capture every AI action across your stack—LLM calls, model inferences, automated decisions—normalized into a single event schema with versioned receipts.
                     </p>
-                    <div className="flex flex-col sm:flex-row gap-4">
-                        <a href="#contact" className="group inline-flex items-center justify-center px-8 py-3 bg-black text-[#e4e2dd] font-medium text-xs tracking-widest hover:bg-[#333] transition-colors duration-200 uppercase">
-                            Book 8-min Demo
-                            <span className="ml-2 opacity-70 group-hover:translate-x-1 transition-transform"><ArrowRight /></span>
-                        </a>
-                        <a href="#how-it-works" className="inline-flex items-center justify-center px-8 py-3 border border-black/20 text-black font-medium text-xs tracking-widest hover:bg-black/5 transition-colors duration-200 uppercase">
-                            View Live Demo
-                        </a>
-                    </div>
                 </div>
-            </section>
-        );
 
-        const Infrastructure = () => (
-            <section id="security" className="py-20 px-6 border-t border-black/10">
-                <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-12">
-                    <div className="md:w-1/3">
-                        <SectionHeader 
-                            title="Security & Infrastructure" 
-                            subtitle="Engineered for determinism, auditability, and reliability."
-                        />
-                        <div className="mt-8 p-6 bg-white/60 border border-black/5">
-                            <h4 className="font-bold mb-4 text-xs uppercase tracking-wide text-gray-900">System Observability</h4>
-                            <ul className="space-y-3 text-sm text-gray-600">
-                                <li className="flex items-start gap-3">
-                                    <span className="text-gray-400 font-mono text-xs">01</span>
-                                    <span>Real-time Web Dashboard.</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <span className="text-gray-400 font-mono text-xs">02</span>
-                                    <span>CLI access for technical logs.</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <span className="text-gray-400 font-mono text-xs">03</span>
-                                    <span>Complete indicator event audit trail.</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-8">
-                        <div>
-                            <h4 className="font-bold mb-2 text-sm text-gray-900">Policy Traceability</h4>
-                            <p className="text-sm text-gray-600 leading-relaxed mb-6">
-                                Every policy check is logged with full context: which rule, which input, which version, and the exact timestamp.
-                            </p>
-                            <h4 className="font-bold mb-2 text-sm text-gray-900">Versioning</h4>
-                            <p className="text-sm text-gray-600 leading-relaxed">
-                                Model versions, prompt versions, and policy versions are tracked independently. Replay works across any historical version.
-                            </p>
-                        </div>
-                        <div>
-                            <h4 className="font-bold mb-2 text-sm text-gray-900">System Fail-safes</h4>
-                            <p className="text-sm text-gray-600 leading-relaxed mb-6">
-                                Redundant capture nodes. Heartbeat monitoring. Automatic halt state on integrity anomalies.
-                            </p>
-                            <h4 className="font-bold mb-2 text-sm text-gray-900">Signed Receipts + Hashes</h4>
-                            <p className="text-sm text-gray-600 leading-relaxed">
-                                Every event is cryptographically signed. Tamper detection built in. Deterministic replay guaranteed.
-                            </p>
-                        </div>
-                    </div>
+                <!-- Card 2 -->
+                <div class="glass-panel p-8 hover:bg-white/5 transition-all group">
+                    <div class="mono text-4xl text-gray-700 mb-6 group-hover:text-white transition-colors">02</div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Audit Exports</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        Generate compliance-ready evidence packs (PDF/JSON) for incidents, disputes, and audits—inputs, outputs, timestamps, fingerprints, and policy outcomes.
+                    </p>
                 </div>
-            </section>
-        );
 
-        const Engagement = () => (
-            <section id="licensing" className="py-20 px-6 border-t border-black/10 bg-[#111] text-[#e4e2dd]">
-                <div className="max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-                        <div>
-                            <h2 className="text-xl font-bold uppercase tracking-wide mb-6 text-white/90">Licensing</h2>
-                            
-                            <div className="space-y-6 mb-10 text-sm font-mono text-gray-400">
-                                <p className="leading-relaxed">
-                                    We license access to Oriphim’s predictive models and signals for institutional use.
-                                </p>
-                                <p className="leading-relaxed">
-                                    Each license includes real-time indicators, private onboarding, and ongoing support — tailored to your infrastructure.
-                                </p>
-                                <p className="leading-relaxed border-l border-gray-600 pl-4 text-gray-500">
-                                    Oriphim does not execute trades or access brokerage accounts. Execution remains fully under your control.
-                                </p>
+                <!-- Card 3 -->
+                <div class="glass-panel p-8 hover:bg-white/5 transition-all group">
+                    <div class="mono text-4xl text-gray-700 mb-6 group-hover:text-white transition-colors">03</div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Replay & Lineage</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        Replay exactly what happened using model/prompt versions and trace hashes. Track lineage across datasets, features, and downstream actions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits / Infrastructure -->
+    <section id="benefits" class="relative z-10 py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <!-- Changed font-light to font-bold -->
+                    <h2 class="text-3xl font-bold mb-8">Evidence Infrastructure <br><span class="text-orange-500">By The Numbers</span></h2>
+                    <div class="space-y-6">
+                        <div class="border-b border-white/10 pb-4">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="mono text-sm text-gray-400">UPTIME RELIABILITY</span>
+                                <span class="mono text-orange-500">99.999%</span>
                             </div>
-
-                            <div className="border-t border-gray-800 pt-8">
-                                <p className="text-white/90 font-bold mb-6 text-sm flex items-center gap-3">
-                                    <span className="text-lg">ツ</span> Let’s discuss the best model for your team.
-                                </p>
-                                <div className="flex flex-col sm:flex-row gap-4">
-                                    <a href="#contact" className="inline-flex items-center justify-center border border-white px-6 py-3 text-white text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-colors">
-                                        Book a call
-                                    </a>
-                                    <a href="#contact" className="inline-flex items-center justify-center border border-gray-700 px-6 py-3 text-gray-400 text-xs font-bold uppercase tracking-widest hover:border-gray-500 hover:text-white transition-colors">
-                                        Request private demo
-                                    </a>
-                                </div>
+                            <div class="w-full bg-gray-900 h-1">
+                                <div class="bg-orange-500 h-1 w-[99.9%]"></div>
                             </div>
                         </div>
-
-                        <div>
-                            <h2 className="text-xl font-bold uppercase tracking-wide mb-6 text-white/90">About Oriphim</h2>
-                            <p className="text-gray-400 leading-relaxed mb-6 text-sm">
-                                Oriphim is built for teams that need reliable market indicators with strong operational controls. We do not execute trades and do not access brokerage systems.
-                            </p>
-                            <p className="text-gray-400 leading-relaxed text-sm">
-                                Systems designed for longevity.
-                            </p>
+                        <div class="border-b border-white/10 pb-4">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="mono text-sm text-gray-400">EVENTS INDEXED / DAY</span>
+                                <span class="mono text-orange-500">50M+</span>
+                            </div>
+                            <div class="w-full bg-gray-900 h-1">
+                                <div class="bg-orange-500 h-1 w-[85%]"></div>
+                            </div>
+                        </div>
+                        <div class="border-b border-white/10 pb-4">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="mono text-sm text-gray-400">QUERY LATENCY (P95)</span>
+                                <span class="mono text-orange-500">&lt; 200ms</span>
+                            </div>
+                            <div class="w-full bg-gray-900 h-1">
+                                <div class="bg-orange-500 h-1 w-[90%]"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
-        );
-
-        const Contact = () => {
-            const [submitted, setSubmitted] = useState(false);
-            const [isSubmitting, setIsSubmitting] = useState(false);
-
-            const handleSubmit = async (e) => {
-                e.preventDefault();
-                setIsSubmitting(true);
-
-                const formData = new FormData(e.target);
                 
-                try {
-                    const response = await fetch('/submit-form', {
-                        method: 'POST',
-                        body: formData
-                    });
-
-                    const data = await response.json();
-                    
-                    console.log('Form response:', response.status, data);
-
-                    if (data.success) {
-                        setSubmitted(true);
-                        e.target.reset();
-                    } else {
-                        console.error('Form submission error:', data);
-                        alert('Submission failed: ' + (data.message || 'Please try again or email v5philcarr@gmail.com'));
-                    }
-                } catch (error) {
-                    console.error('Network error:', error);
-                    alert('Network error. Please try again.');
-                } finally {
-                    setIsSubmitting(false);
-                }
-            };
-
-            if (submitted) {
-                 return (
-                    <section id="contact" className="py-24 px-6 max-w-3xl mx-auto text-center">
-                        <div className="border border-gray-400 bg-white/50 p-12">
-                            <h3 className="text-lg font-bold mb-2 text-gray-900">Inquiry Logged.</h3>
-                            <p className="text-sm text-gray-600">
-                                Routing to onboarding desk.
-                            </p>
-                        </div>
-                    </section>
-                )
-            }
-
-            return (
-                <section id="contact" className="py-24 px-6 border-t border-black/10">
-                    <div className="max-w-3xl mx-auto">
-                        <div className="text-center mb-12">
-                            <h2 className="text-2xl font-bold mb-2 text-gray-900">Request Pilot Access</h2>
-                            <p className="text-gray-600 text-sm">First export in 7 days or you don't pay. Limited pilot slots available.</p>
-                        </div>
-                        
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            <input type="hidden" name="access_key" value="2e6f8de3-108b-4343-8b29-5add3e4abc6f" />
-                            <input type="hidden" name="subject" value="New ORIPHIM AuditPipe Pilot Request" />
-                            <input type="hidden" name="from_name" value="ORIPHIM Website" />
-                            
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-1">
-                                    <label className="text-xs font-bold uppercase tracking-wide text-gray-500">Company</label>
-                                    <input required type="text" name="company" className="w-full bg-white border border-gray-300 p-3 text-sm focus:outline-none focus:border-black rounded-none transition-colors" />
-                                </div>
-                                <div className="space-y-1">
-                                    <label className="text-xs font-bold uppercase tracking-wide text-gray-500">Work Email</label>
-                                    <input required type="email" name="email" className="w-full bg-white border border-gray-300 p-3 text-sm focus:outline-none focus:border-black rounded-none transition-colors" />
-                                </div>
-                            </div>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-1">
-                                    <label className="text-xs font-bold uppercase tracking-wide text-gray-500">Role</label>
-                                    <input required type="text" name="role" className="w-full bg-white border border-gray-300 p-3 text-sm focus:outline-none focus:border-black rounded-none transition-colors" placeholder="e.g., CTO, Head of Compliance" />
-                                </div>
-                                <div className="space-y-1">
-                                    <label className="text-xs font-bold uppercase tracking-wide text-gray-500">Industry</label>
-                                    <input required type="text" name="industry" className="w-full bg-white border border-gray-300 p-3 text-sm focus:outline-none focus:border-black rounded-none transition-colors" placeholder="e.g., Fintech, Healthcare" />
-                                </div>
-                            </div>
-                            
-                            <div className="space-y-1">
-                                <label className="text-xs font-bold uppercase tracking-wide text-gray-500">Where does AI run today?</label>
-                                <input required type="text" name="ai_systems" className="w-full bg-white border border-gray-300 p-3 text-sm focus:outline-none focus:border-black rounded-none transition-colors" placeholder="e.g., Production chatbot, internal tooling, automated decisions" />
-                            </div>
-
-                            <div className="space-y-1">
-                                <label className="text-xs font-bold uppercase tracking-wide text-gray-500">Biggest audit risk</label>
-                                <textarea required rows="4" name="audit_risk" className="w-full bg-white border border-gray-300 p-3 text-sm focus:outline-none focus:border-black rounded-none transition-colors" placeholder="What keeps you up at night regarding AI compliance?"></textarea>
-                            </div>
-
-                            <div className="space-y-1">
-                                <label className="text-xs font-bold uppercase tracking-wide text-gray-500">Preferred Integration</label>
-                                <select required name="integration" className="w-full bg-white border border-gray-300 p-3 text-sm focus:outline-none focus:border-black rounded-none appearance-none transition-colors">
-                                    <option value="" disabled selected>Select integration method</option>
-                                    <option value="sdk">SDK (Python/Node)</option>
-                                    <option value="api">API Gateway</option>
-                                    <option value="webhook">Webhook</option>
-                                    <option value="not_sure">Not sure yet</option>
-                                </select>
-                            </div>
-
-                            <div className="pt-4 text-center md:text-left">
-                                <button type="submit" disabled={isSubmitting} className="w-full md:w-auto px-12 py-4 bg-[#1a1a1a] text-white font-medium tracking-widest text-xs hover:bg-[#333] transition-colors uppercase disabled:opacity-50 disabled:cursor-not-allowed">
-                                    {isSubmitting ? 'Submitting...' : 'Submit Pilot Request'}
-                                </button>
-                                <p className="text-[10px] text-gray-500 mt-4 max-w-sm">
-                                    Oriphim provides AI evidence logging and exports. Not legal advice.
-                                </p>
-                            </div>
-                        </form>
-                    </div>
-                </section>
-            );
-        };
-
-        const Footer = () => (
-            <footer className="py-12 px-6 border-t border-black/10 text-center md:text-left">
-                <div className="max-w-7xl mx-auto flex flex-col items-center md:items-start text-[10px] text-gray-500 font-mono tracking-wider">
-                    <div className="mb-2 text-gray-400">
-                        Oriphim provides AI evidence logging and exports. Not legal advice. Customer controls enforcement and compliance decisions.
-                    </div>
-                    <div className="w-full flex flex-col md:flex-row justify-between items-center">
-                        <div className="mb-4 md:mb-0">
-                            &copy; 2026 ORIPHIM LABS LLC
-                        </div>
-                        <div className="space-x-6">
-                            <a href="/pages/legal.html" className="hover:text-black transition-colors">LEGAL</a>
-                            <a href="/pages/privacy.html" className="hover:text-black transition-colors">PRIVACY</a>
-                            <a href="/pages/sla.html" className="hover:text-black transition-colors">SLA</a>
-                        </div>
-                    </div>
+                <!-- Replacement Text Section -->
+                <div class="flex flex-col justify-center pl-0 lg:pl-16">
+                    <h3 class="text-xl font-bold text-white mb-6">Technical Deployment Specs</h3>
+                    <ul class="text-sm text-gray-400 space-y-4 mono">
+                        <li class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
+                            Deploy in days, not months
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
+                            Drop-in SDK or API endpoint
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
+                            Immutable receipts + retention controls
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
+                            SOC2-aligned controls (pilot-ready)
+                        </li>
+                    </ul>
                 </div>
-            </footer>
-        );
+            </div>
+        </div>
+    </section>
 
-        const App = () => {
-            return (
-                <div className="min-h-screen text-oriphim-text selection:bg-black selection:text-white">
-                    <Nav />
-                    <Hero />
-                    <Infrastructure />
-                    <Engagement />
-                    <Contact />
-                    <Footer />
+    <!-- Pilot Program Section -->
+    <section id="pilot" class="relative z-10 py-24 border-t border-white/10 bg-white/5">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-6 text-white">Enterprise Pilot Program</h2>
+            <p class="text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed font-normal">
+                Submit 3–5 real AI workflows (LLM calls, automated decisions, or model outputs). Oriphim will instrument your pipeline and deliver a replayable timeline + audit-ready evidence export (PDF/JSON) within 7 days. <br><br>
+                <span class="text-white font-bold">If we can’t produce a usable evidence pack for at least one workflow, you pay nothing.</span>
+            </p>
+            <a href="#access" class="mono bg-white text-black font-bold px-10 py-4 hover:bg-gray-200 transition-colors inline-block border border-white">
+                REQUEST PILOT ACCESS
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact / Footer -->
+    <section id="access" class="relative z-10 py-24 bg-black border-t border-white/10">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-6 text-white">Request Access</h2>
+            <p class="text-gray-400 mb-12 max-w-lg mx-auto">
+                Oriphim is onboarding a small number of design partners. If your AI outputs touch customers, money, or regulated data, request access for a pilot review.
+            </p>
+            
+            <form class="max-w-md mx-auto space-y-4 text-left" onsubmit="event.preventDefault(); alert('Request received. Oriphim will respond within 24 hours.');">
+                <div>
+                    <label class="mono text-xs text-gray-500 block mb-2">NAME</label>
+                    <input type="text" class="w-full bg-gray-900 border border-white/10 text-white px-4 py-3 focus:outline-none focus:border-orange-500 transition-colors font-bold" placeholder="Enter full name">
                 </div>
-            );
-        };
+                <div>
+                    <label class="mono text-xs text-gray-500 block mb-2">EMAIL</label>
+                    <input type="email" class="w-full bg-gray-900 border border-white/10 text-white px-4 py-3 focus:outline-none focus:border-orange-500 transition-colors font-bold" placeholder="name@company.com">
+                </div>
+                <div>
+                    <label class="mono text-xs text-gray-500 block mb-2">MESSAGE</label>
+                    <textarea class="w-full bg-gray-900 border border-white/10 text-white px-4 py-3 focus:outline-none focus:border-orange-500 transition-colors font-bold h-32 resize-none" placeholder="Describe your AI workflows and audit/compliance requirements..."></textarea>
+                </div>
+                <button type="submit" class="w-full bg-white text-black font-bold py-4 mt-4 hover:bg-gray-200 transition-colors mono">
+                    Request Access
+                </button>
+            </form>
+            
+            <p class="mono text-xs text-gray-600 mt-8">
+                Enterprise pilots include NDA + secure evidence export.
+            </p>
+        </div>
+        
+        <footer class="mt-24 pt-12 border-t border-white/5 max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 mono">
+            <div>
+                &copy; 2026 ORIPHIM LABS LLC. ALL RIGHTS RESERVED. <span class="text-gray-500 ml-2">Evidence Sovereignty™</span>
+            </div>
+            <div class="flex gap-4 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white">LEGAL</a>
+                <a href="#" class="hover:text-white">PRIVACY</a>
+                <a href="#" class="hover:text-white">SYSTEM STATUS</a>
+            </div>
+        </footer>
+    </section>
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
+    <script>
+        // Smooth Scroll
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
     </script>
 </body>
 </html>
