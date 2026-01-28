@@ -3,270 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ORIPHIM</title>
-    <meta name="description" content="Receipts for every AI decision. Oriphim generates replayable audit trails, lineage, and 1-click evidence exports for AI systems in production.">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+    <title>ORIPHIM | Infrastructure that scales with institutional growth</title>
+    <meta name="description" content="Institutional-grade model risk management and alpha validation. Oriphim provides the infrastructure for systematic fund scaling.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- SWAPPED FONT: Space Grotesk for bolder, more technical feel -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            /* Applied Space Grotesk */
-            font-family: 'Space Grotesk', sans-serif;
-            background-color: #050505;
-            color: #e5e5e5;
-            overflow-x: hidden;
-        }
-        .mono {
-            font-family: 'JetBrains Mono', monospace;
-        }
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a0a0a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-        
-        .glow-text {
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-        }
-        
-        /* Subtle Grid Background */
-        .bg-grid {
-            background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-        }
-
-        .glass-panel {
-            background: rgba(10, 10, 10, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
+        body { font-family: 'Space Grotesk', sans-serif; background-color: #050505; color: #e5e5e5; overflow-x: hidden; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .bg-grid { background-size: 40px 40px; background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px); }
+        .glass-panel { background: rgba(10, 10, 10, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .glow-text { text-shadow: 0 0 15px rgba(255, 255, 255, 0.2); }
     </style>
 </head>
 <body class="antialiased bg-grid relative">
 
-    <!-- Navigation -->
     <nav class="fixed w-full z-50 top-0 left-0 border-b border-white/5 glass-panel">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
             <div class="flex items-center gap-2">
-                <!-- Increased weight for logo -->
                 <span class="mono font-bold tracking-tighter text-lg text-white">ORIPHIM</span>
             </div>
             <div class="hidden md:flex items-center gap-8 mono text-xs text-gray-400">
-                <a href="#product" class="hover:text-white transition-colors">PRODUCT</a>
-                <a href="#benefits" class="hover:text-white transition-colors">WHY ORIPHIM</a>
-                <a href="#pilot" class="hover:text-white transition-colors">PILOT PROGRAM</a>
-                <a href="#access" class="border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition-all">REQUEST ACCESS</a>
+                <a href="#infrastructure" class="hover:text-white transition-colors">INFRASTRUCTURE</a>
+                <a href="#quant-audit" class="hover:text-white transition-colors">QUANT AUDIT</a>
+                <a href="#licensing" class="hover:text-white transition-colors">LICENSING</a>
+                <a href="#access" class="border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition-all">INSTITUTIONAL ACCESS</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="relative z-10 min-h-screen flex items-center justify-center pt-20">
         <div class="max-w-7xl mx-auto px-6 w-full">
             <div class="max-w-4xl">
-                <p class="mono text-orange-500 mb-4 tracking-widest text-xs uppercase">System Status: Online // Evidence Capture Active</p>
-                <!-- Changed font-light to font-bold for impact -->
+                <p class="mono text-green-500 mb-4 tracking-widest text-xs uppercase">Precision Engineering for Systematic Alpha</p>
                 <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-8 text-white">
-                    Receipts for every AI decision. <br>
-                    <span class="font-bold glow-text">Replayable audit trails for production AI.</span>
+                    Institutional-Grade <br>
+                    <span class="font-bold glow-text text-green-500">Quant Infrastructure.</span>
                 </h1>
-                <!-- Changed font-light to font-normal -->
                 <p class="text-xl md:text-2xl text-gray-400 font-normal max-w-2xl leading-relaxed mb-12">
-                    Oriphim generates immutable evidence for every AI output—inputs, outputs, model + prompt versions, policy checks, and lineage—then exports audit-ready packages in one click. Deploy in days. Prove incidents in minutes.
+                    Oriphim builds high-fidelity model risk frameworks and automated MLOps for hedge funds and family offices. We solve the "Black Box" problem with immutable execution logs and Bayesian alpha validation.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <button onclick="scrollToSection('pilot')" class="mono bg-white text-black px-8 py-4 font-bold hover:bg-gray-200 transition-colors border border-white">
-                        REQUEST PILOT
+                    <button onclick="scrollToSection('access')" class="mono bg-white text-black px-8 py-4 font-bold hover:bg-gray-200 transition-colors">
+                        REQUEST STRATEGIC AUDIT
                     </button>
-                    <button onclick="scrollToSection('product')" class="mono bg-transparent text-white px-8 py-4 border border-white/20 hover:border-white transition-colors">
-                        VIEW DEMO FLOW
+                    <button onclick="scrollToSection('infrastructure')" class="mono bg-transparent text-white px-8 py-4 border border-white/20 hover:border-white transition-colors">
+                        VIEW SYSTEM SPECS
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Product / Capabilities -->
-    <section id="product" class="relative z-10 py-24 border-t border-white/5 bg-black/20">
+    <section id="infrastructure" class="relative z-10 py-24 border-t border-white/5 bg-black/20">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16">
                 <div>
-                    <h2 class="text-3xl font-bold mb-2">What Oriphim Delivers</h2>
-                    <div class="h-1 w-20 bg-orange-900"></div>
+                    <h2 class="text-3xl font-bold mb-2">Core Competencies</h2>
+                    <div class="h-1 w-20 bg-green-900"></div>
                 </div>
-                <p class="mono text-xs text-gray-500 mt-4 md:mt-0">IMMUTABLE // TRACEABLE // EXPORTABLE</p>
+                <p class="mono text-xs text-gray-500 mt-4 md:mt-0">YIELD // RISK // INTEGRITY</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
                 <div class="glass-panel p-8 hover:bg-white/5 transition-all group">
                     <div class="mono text-4xl text-gray-700 mb-6 group-hover:text-white transition-colors">01</div>
-                    <h3 class="text-xl font-bold mb-4 text-white">Evidence Capture</h3>
+                    <h3 class="text-xl font-bold mb-4 text-white">Alpha Validation</h3>
                     <p class="text-gray-400 leading-relaxed text-sm">
-                        Capture every AI action across your stack—LLM calls, model inferences, automated decisions—normalized into a single event schema with versioned receipts.
+                        Continuous backtesting-to-live variance analysis. We identify "Alpha Decay" in real-time by cross-referencing live execution against synthetic counterfactuals.
                     </p>
                 </div>
 
-                <!-- Card 2 -->
                 <div class="glass-panel p-8 hover:bg-white/5 transition-all group">
                     <div class="mono text-4xl text-gray-700 mb-6 group-hover:text-white transition-colors">02</div>
-                    <h3 class="text-xl font-bold mb-4 text-white">Audit Exports</h3>
+                    <h3 class="text-xl font-bold mb-4 text-white">Model Risk Mgmt (MRM)</h3>
                     <p class="text-gray-400 leading-relaxed text-sm">
-                        Generate compliance-ready evidence packs (PDF/JSON) for incidents, disputes, and audits—inputs, outputs, timestamps, fingerprints, and policy outcomes.
+                        Immutable audit trails for systematic decisions. We provide the forensic lineage required by institutional LPs to prove strategy adherence and risk limits.
                     </p>
                 </div>
 
-                <!-- Card 3 -->
                 <div class="glass-panel p-8 hover:bg-white/5 transition-all group">
                     <div class="mono text-4xl text-gray-700 mb-6 group-hover:text-white transition-colors">03</div>
-                    <h3 class="text-xl font-bold mb-4 text-white">Replay & Lineage</h3>
+                    <h3 class="text-xl font-bold mb-4 text-white">Quant Systems Design</h3>
                     <p class="text-gray-400 leading-relaxed text-sm">
-                        Replay exactly what happened using model/prompt versions and trace hashes. Track lineage across datasets, features, and downstream actions.
+                        High-performance MLOps for trade signal generation. Custom feature stores, low-latency data pipelines, and distributed GPU compute architecture.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Benefits / Infrastructure -->
-    <section id="benefits" class="relative z-10 py-24">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <!-- Changed font-light to font-bold -->
-                    <h2 class="text-3xl font-bold mb-8">Evidence Infrastructure <br><span class="text-orange-500">By The Numbers</span></h2>
-                    <div class="space-y-6">
-                        <div class="border-b border-white/10 pb-4">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="mono text-sm text-gray-400">UPTIME RELIABILITY</span>
-                                <span class="mono text-orange-500">99.999%</span>
-                            </div>
-                            <div class="w-full bg-gray-900 h-1">
-                                <div class="bg-orange-500 h-1 w-[99.9%]"></div>
-                            </div>
-                        </div>
-                        <div class="border-b border-white/10 pb-4">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="mono text-sm text-gray-400">EVENTS INDEXED / DAY</span>
-                                <span class="mono text-orange-500">50M+</span>
-                            </div>
-                            <div class="w-full bg-gray-900 h-1">
-                                <div class="bg-orange-500 h-1 w-[85%]"></div>
-                            </div>
-                        </div>
-                        <div class="border-b border-white/10 pb-4">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="mono text-sm text-gray-400">QUERY LATENCY (P95)</span>
-                                <span class="mono text-orange-500">&lt; 200ms</span>
-                            </div>
-                            <div class="w-full bg-gray-900 h-1">
-                                <div class="bg-orange-500 h-1 w-[90%]"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Replacement Text Section -->
-                <div class="flex flex-col justify-center pl-0 lg:pl-16">
-                    <h3 class="text-xl font-bold text-white mb-6">Technical Deployment Specs</h3>
-                    <ul class="text-sm text-gray-400 space-y-4 mono">
-                        <li class="flex items-center gap-3">
-                            <div class="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
-                            Deploy in days, not months
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <div class="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
-                            Drop-in SDK or API endpoint
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <div class="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
-                            Immutable receipts + retention controls
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <div class="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
-                            SOC2-aligned controls (pilot-ready)
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pilot Program Section -->
-    <section id="pilot" class="relative z-10 py-24 border-t border-white/10 bg-white/5">
+    <section id="quant-audit" class="relative z-10 py-24 border-t border-white/10 bg-white/5">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-6 text-white">Enterprise Pilot Program</h2>
+            <h2 class="text-3xl font-bold mb-6 text-white">The $50M Strategy Stress Test</h2>
             <p class="text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed font-normal">
-                Submit 3–5 real AI workflows (LLM calls, automated decisions, or model outputs). Oriphim will instrument your pipeline and deliver a replayable timeline + audit-ready evidence export (PDF/JSON) within 7 days. <br><br>
-                <span class="text-white font-bold">If we can’t produce a usable evidence pack for at least one workflow, you pay nothing.</span>
+                If you are managing over $50M AUM, your biggest cost isn't fees—it's <span class="text-white font-bold">Model Drift.</span> <br><br>
+                Submit your historical execution logs and strategy parameters. Oriphim will deliver a 
+                <span class="text-green-500 font-bold">Quantitative Integrity Report</span> within 72 hours. We identify the exact points where your alpha leaks into execution slippage.
             </p>
-            <a href="#access" class="mono bg-white text-black font-bold px-10 py-4 hover:bg-gray-200 transition-colors inline-block border border-white">
-                REQUEST PILOT ACCESS
+            <a href="#access" class="mono bg-white text-black font-bold px-10 py-4 hover:bg-gray-200 transition-colors inline-block">
+                CLAIM YOUR STRATEGIC AUDIT
             </a>
         </div>
     </section>
 
-    <!-- Contact / Footer -->
     <section id="access" class="relative z-10 py-24 bg-black border-t border-white/10">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-6 text-white">Request Access</h2>
+            <h2 class="text-3xl font-bold mb-6 text-white">Institutional Engagement</h2>
             <p class="text-gray-400 mb-12 max-w-lg mx-auto">
-                Oriphim is onboarding a small number of design partners. If your AI outputs touch customers, money, or regulated data, request access for a pilot review.
+                To ensure infrastructure reliability- at-scale, Oriphim engages with a limited number of institutional clients each quarter. <br><br>
             </p>
             
-            <form class="max-w-md mx-auto space-y-4 text-left" onsubmit="event.preventDefault(); alert('Request received. Oriphim will respond within 24 hours.');">
+            <form class="max-w-md mx-auto space-y-4 text-left">
                 <div>
-                    <label class="mono text-xs text-gray-500 block mb-2">NAME</label>
-                    <input type="text" class="w-full bg-gray-900 border border-white/10 text-white px-4 py-3 focus:outline-none focus:border-orange-500 transition-colors font-bold" placeholder="Enter full name">
+                    <label class="mono text-xs text-gray-500 block mb-2">FUND NAME / AUM</label>
+                    <input type="text" class="w-full bg-gray-900 border border-white/10 text-white px-4 py-3 focus:border-green-500 transition-colors font-bold" placeholder="e.g. Gotham Capital / $120M">
                 </div>
                 <div>
-                    <label class="mono text-xs text-gray-500 block mb-2">EMAIL</label>
-                    <input type="email" class="w-full bg-gray-900 border border-white/10 text-white px-4 py-3 focus:outline-none focus:border-orange-500 transition-colors font-bold" placeholder="name@company.com">
+                    <label class="mono text-xs text-gray-500 block mb-2">ASSET CLASS(ES)</label>
+                    <input type="text" class="w-full bg-gray-900 border border-white/10 text-white px-4 py-3 focus:border-green-500 transition-colors font-bold" placeholder="Equities, FX, Digital Assets">
                 </div>
                 <div>
-                    <label class="mono text-xs text-gray-500 block mb-2">MESSAGE</label>
-                    <textarea class="w-full bg-gray-900 border border-white/10 text-white px-4 py-3 focus:outline-none focus:border-orange-500 transition-colors font-bold h-32 resize-none" placeholder="Describe your AI workflows and audit/compliance requirements..."></textarea>
+                    <label class="mono text-xs text-gray-500 block mb-2">SYSTEM BOTTLENECK(S)</label>
+                    <textarea class="w-full bg-gray-900 border border-white/10 text-white px-4 py-3 focus:border-green-500 transition-colors font-bold h-32" placeholder="Describe your current model risk or infrastructure challenges..."></textarea>
                 </div>
-                <button type="submit" class="w-full bg-white text-black font-bold py-4 mt-4 hover:bg-gray-200 transition-colors mono">
-                    Request Access
+                <button type="submit" class="w-full bg-green-500 text-white font-bold py-4 mt-4 hover:bg-green-600 transition-colors mono uppercase">
+                    Initialize Engagement
                 </button>
             </form>
-            
-            <p class="mono text-xs text-gray-600 mt-8">
-                Enterprise pilots include NDA + secure evidence export.
-            </p>
         </div>
         
         <footer class="mt-24 pt-12 border-t border-white/5 max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 mono">
             <div>
-                &copy; 2026 ORIPHIM LABS LLC. ALL RIGHTS RESERVED. <span class="text-gray-500 ml-2">Evidence Sovereignty™</span>
+                &copy; 2026 ORIPHIM LABS LLC. <span class="text-gray-500 ml-2 uppercase">Systems Architected for $1B+</span>
             </div>
             <div class="flex gap-4 mt-4 md:mt-0">
-                <a href="#" class="hover:text-white">LEGAL</a>
-                <a href="#" class="hover:text-white">PRIVACY</a>
-                <a href="#" class="hover:text-white">SYSTEM STATUS</a>
+                <a href="#" class="hover:text-white">QUANTITATIVE FRAMEWORKS</a>
+                <a href="#" class="hover:text-white">API DOCS</a>
             </div>
         </footer>
     </section>
 
     <script>
-        // Smooth Scroll
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
+        function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
     </script>
 </body>
 </html>
