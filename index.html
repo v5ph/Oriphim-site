@@ -169,18 +169,19 @@
     </section>
 
     <script>
-        // Initialize Supabase client
-        const supabaseUrl = 'https://suzmovbxrxqxzqzcqnlu.supabase.co';
-        const supabaseKey = 'sb_publishable_hRfPv4B86Qdsn2-hbbHIgA_2Z9K64Lq';
-        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+        (function() {
+            // Initialize Supabase client
+            const supabaseUrl = 'https://suzmovbxrxqxzqzcqnlu.supabase.co';
+            const supabaseKey = 'sb_publishable_hRfPv4B86Qdsn2-hbbHIgA_2Z9K64Lq';
+            const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-        // Smooth scroll helper
-        function scrollToSection(id) { 
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); 
-        }
+            // Smooth scroll helper - attach to window
+            window.scrollToSection = function(id) { 
+                document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); 
+            };
 
-        // Form submission handler
-        document.getElementById('institutionalForm').addEventListener('submit', async (e) => {
+            // Form submission handler
+            document.getElementById('institutionalForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             
             const formStatus = document.getElementById('formStatus');
@@ -224,6 +225,7 @@
                 submitBtn.textContent = originalBtnText;
             }
         });
+        })(); // End IIFE
     </script>
 </body>
 </html>
