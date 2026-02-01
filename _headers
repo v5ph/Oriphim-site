@@ -9,7 +9,7 @@
   Permissions-Policy: geolocation=(), microphone=(), camera=()
   
   # Content Security Policy (adjust as needed for your CDN resources)
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self';
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://cdn.tailwindcss.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://suzmovbxrxqxzqzcqnlu.supabase.co;
   
   # Cache Control
   Cache-Control: public, max-age=3600, must-revalidate
