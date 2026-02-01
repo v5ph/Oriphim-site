@@ -22,6 +22,7 @@
         .glass-panel { background: rgba(10, 10, 10, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
         .glow-text { text-shadow: 0 0 15px rgba(255, 255, 255, 0.2); }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body class="antialiased bg-grid relative">
 
@@ -118,23 +119,38 @@
     <section id="access" class="relative z-10 py-24 bg-black border-t border-white/10">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold mb-6 text-white">Institutional Engagement</h2>
-            <p c<span class="text-white font-bold">Note:</span> Oriphim accepts only <span class="text-green-500 font-bold">2 new institutional integrations per quarter</span> to maintain infrastructure integrity. <br><br>
+            <p class="text-gray-400 mb-12">
+                <span class="text-white font-bold">Note:</span> Oriphim accepts only <span class="text-green-500 font-bold">2 new institutional integrations per quarter</span> to maintain infrastructure integrity.
             </p>
             
-            <form class="max-w-md mx-auto space-y-4 text-left">
+            <form id="institutionalForm" class="max-w-md mx-auto space-y-4 text-left">
+                <div>
+                    <label class="mono text-xs text-gray-500 block mb-2">INSTITUTION NAME</label>
+                    <input type="text" name="institution" required class="w-full bg-gray-900 border border-white/10 text-white px-4 py-3 focus:border-green-500 transition-colors font-bold" placeholder="Your Fund/Institution Name">
+                </div>
+                <div>
+                    <label class="mono text-xs text-gray-500 block mb-2">CONTACT EMAIL</label>
+                    <input type="email" name="email" required class="w-full bg-gray-900 border border-white/10 text-white px-4 py-3 focus:border-green-500 transition-colors font-bold" placeholder="institutional@contact.com">
+                </div>
                 <div>
                     <label class="mono text-xs text-gray-500 block mb-2">CURRENT AUM</label>
-                    <input type="text" class="w-full bg-gray-900 border border-white/10 text-white px-4 py-3 focus:border-green-500 transition-colors font-bold" placeholder="e.g. $120M">
+                    <input type="text" name="capital_base" required class="w-full bg-gray-900 border border-white/10 text-white px-4 py-3 focus:border-green-500 transition-colors font-bold" placeholder="e.g. $120M">
+                </div>
+                <div>
+                    <label class="mono text-xs text-gray-500 block mb-2">INTEGRATION TYPE</label>
+                    <select name="integration" required class="w-full bg-gray-900 border border-white/10 text-white px-4 py-3 focus:border-green-500 transition-colors font-bold">
+                        <option value="">Select Integration Type</option>
+                        <option value="alpha-validation">Alpha Validation Audit</option>
+                        <option value="mrm-full">Full MRM Implementation</option>
+                        <option value="infrastructure">Infrastructure Build</option>
+                        <option value="consulting">Strategic Consulting</option>
+                    </select>
                 </div>
                 <div>
                     <label class="mono text-xs text-gray-500 block mb-2">PRIMARY RISK CONCERN</label>
-                    <textarea class="w-full bg-gray-900 border border-white/10 text-white px-4 py-3 focus:border-green-500 transition-colors font-bold h-32" placeholder="e.g. Our LPs are asking for better MRM, or Our live returns don't match backtests..."></textarea>
+                    <textarea name="message" required class="w-full bg-gray-900 border border-white/10 text-white px-4 py-3 focus:border-green-500 transition-colors font-bold h-32" placeholder="e.g. Our LPs are asking for better MRM, or Our live returns don't match backtests..."></textarea>
                 </div>
-                <div>
-                    <label class="mono text-xs text-gray-500 block mb-2">INFRASTRUCTURE BUDGET (ANNUAL)</label>
-                    <input type="text" class="w-full bg-gray-900 border border-white/10 text-white px-4 py-3 focus:border-green-500 transition-colors font-bold" placeholder="e.g. $250k - $500k"
-                    <textarea class="w-full bg-gray-900 border border-white/10 text-white px-4 py-3 focus:border-green-500 transition-colors font-bold h-32" placeholder="Describe your current model risk or infrastructure challenges..."></textarea>
-                </div>
+                <div id="formStatus" class="hidden text-sm text-center py-2"></div>
                 <button type="submit" class="w-full bg-green-500 text-white font-bold py-4 mt-4 hover:bg-green-600 transition-colors mono uppercase">
                     Initialize Engagement
                 </button>
@@ -153,7 +169,61 @@
     </section>
 
     <script>
-        function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
+        // Initialize Supabase client
+        const supabaseUrl = 'https://suzmovbxrxqxzqzcqnlu.supabase.co';
+        const supabaseKey = 'sb_publishable_hRfPv4B86Qdsn2-hbbHIgA_2Z9K64Lq';
+        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+        // Smooth scroll helper
+        function scrollToSection(id) { 
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); 
+        }
+
+        // Form submission handler
+        document.getElementById('institutionalForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formStatus = document.getElementById('formStatus');
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+            
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'SUBMITTING...';
+            formStatus.classList.remove('hidden', 'text-red-500', 'text-green-500');
+            formStatus.textContent = 'Processing your request...';
+            
+            try {
+                const formData = new FormData(e.target);
+                const data = {
+                    institution: formData.get('institution'),
+                    email: formData.get('email'),
+                    capital_base: formData.get('capital_base'),
+                    integration: formData.get('integration'),
+                    message: formData.get('message'),
+                    submitted_at: new Date().toISOString()
+                };
+
+                const { error } = await supabase
+                    .from('institutional_inquiries')
+                    .insert([data]);
+
+                if (error) throw error;
+
+                // Success
+                formStatus.classList.add('text-green-500');
+                formStatus.textContent = '✓ Engagement request received. Our team will contact you within 48 hours.';
+                e.target.reset();
+                
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                formStatus.classList.add('text-red-500');
+                formStatus.textContent = '✗ Error submitting request. Please email us directly or try again.';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+            }
+        });
     </script>
 </body>
 </html>
