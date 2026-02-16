@@ -53,22 +53,22 @@ export default function InstitutionalForm() {
   return (
     <section id="access" className="relative z-10 py-24 bg-space-indigo/10 border-t border-carbon-black/10">
       <div className="max-w-4xl mx-auto px-6 text-center">
-        <h2 className="text-3xl font-bold mb-6 text-carbon-black">Institutional Engagement</h2>
+        <h2 className="text-3xl font-bold mb-6 text-carbon-black">Enterprise Engagement</h2>
         <p className="text-charcoal-brown mb-12">
           <span className="text-carbon-black font-bold">Note:</span> Oriphim accepts only{' '}
-          <span className="text-blood-red font-bold">2 new infrastructure integrations per quarter</span> to
+          <span className="text-blood-red font-bold">2 new enterprise integrations per quarter</span> to
           maintain the V-Layer substrate.
         </p>
 
         <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4 text-left">
           <div>
-            <label className="mono text-xs text-charcoal-brown block mb-2">INSTITUTION NAME</label>
+            <label className="mono text-xs text-charcoal-brown block mb-2">ORGANIZATION NAME</label>
             <input
               type="text"
               name="institution"
               required
               className="w-full bg-floral-white border border-carbon-black/20 text-carbon-black px-4 py-3 focus:border-blood-red transition-colors font-bold"
-              placeholder="Your Fund/Institution Name"
+              placeholder="Your Company/Organization Name"
             />
           </div>
           <div>
@@ -78,17 +78,17 @@ export default function InstitutionalForm() {
               name="email"
               required
               className="w-full bg-floral-white border border-carbon-black/20 text-carbon-black px-4 py-3 focus:border-blood-red transition-colors font-bold"
-              placeholder="institutional@contact.com"
+              placeholder="contact@yourcompany.com"
             />
           </div>
           <div>
-            <label className="mono text-xs text-charcoal-brown block mb-2">CURRENT AUM</label>
+            <label className="mono text-xs text-charcoal-brown block mb-2">ORGANIZATION SIZE</label>
             <input
               type="text"
               name="capital_base"
               required
               className="w-full bg-floral-white border border-carbon-black/20 text-carbon-black px-4 py-3 focus:border-blood-red transition-colors font-bold"
-              placeholder="e.g. $120M"
+              placeholder="e.g. 500 employees, $50M ARR"
             />
           </div>
           <div>
