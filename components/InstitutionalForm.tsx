@@ -53,22 +53,22 @@ export default function InstitutionalForm() {
   return (
     <section id="access" className="relative z-10 py-24 bg-space-indigo/10 border-t border-carbon-black/10">
       <div className="max-w-4xl mx-auto px-6 text-center">
-        <h2 className="text-3xl font-bold mb-6 text-carbon-black">Enterprise Engagement</h2>
+        <h2 className="text-3xl font-bold mb-6 text-carbon-black">Financial Institution Partnership</h2>
         <p className="text-charcoal-brown mb-12">
-          <span className="text-carbon-black font-bold">Note:</span> Oriphim accepts only{' '}
-          <span className="text-blood-red font-bold">2 new enterprise integrations per quarter</span> to
-          maintain the V-Layer substrate.
+          <span className="text-carbon-black font-bold">Note:</span> We accept{' '}
+          <span className="text-blood-red font-bold">1 hedge fund or financial institution per quarter</span> for deep integration.
+          This ensures white-glove onboarding and dedicated validation infrastructure.
         </p>
 
         <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4 text-left">
           <div>
-            <label className="mono text-xs text-charcoal-brown block mb-2">ORGANIZATION NAME</label>
+            <label className="mono text-xs text-charcoal-brown block mb-2">FIRM NAME</label>
             <input
               type="text"
               name="institution"
               required
               className="w-full bg-floral-white border border-carbon-black/20 text-carbon-black px-4 py-3 focus:border-blood-red transition-colors font-bold"
-              placeholder="Your Company/Organization Name"
+              placeholder="Your Hedge Fund or Financial Institution"
             />
           </div>
           <div>
@@ -78,40 +78,42 @@ export default function InstitutionalForm() {
               name="email"
               required
               className="w-full bg-floral-white border border-carbon-black/20 text-carbon-black px-4 py-3 focus:border-blood-red transition-colors font-bold"
-              placeholder="contact@yourcompany.com"
+              placeholder="your@firm.com"
             />
           </div>
           <div>
-            <label className="mono text-xs text-charcoal-brown block mb-2">ORGANIZATION SIZE</label>
+            <label className="mono text-xs text-charcoal-brown block mb-2">ASSETS UNDER MANAGEMENT</label>
             <input
               type="text"
               name="capital_base"
               required
               className="w-full bg-floral-white border border-carbon-black/20 text-carbon-black px-4 py-3 focus:border-blood-red transition-colors font-bold"
-              placeholder="e.g. 500 employees, $50M ARR"
+              placeholder="e.g. $500M, $2B"
             />
           </div>
           <div>
-            <label className="mono text-xs text-charcoal-brown block mb-2">INTEGRATION TYPE</label>
+            <label className="mono text-xs text-charcoal-brown block mb-2">AI USE CASE</label>
             <select
               name="integration"
               required
               className="w-full bg-floral-white border border-carbon-black/20 text-carbon-black px-4 py-3 focus:border-blood-red transition-colors font-bold"
             >
-              <option value="">Select Integration Type</option>
-              <option value="watcher-protocol">Watcher Protocol Integration</option>
-              <option value="biopharma-safety">BioPharma Safety Audit</option>
-              <option value="quant-finance">Quant-Finance Logic Gateway</option>
-              <option value="aerospace-logic">Aerospace Logic Check</option>
+              <option value="">Select Your AI Use Case</option>
+              <option value="algorithmic-trading">Algorithmic Trading Agents</option>
+              <option value="portfolio-management">Autonomous Portfolio Management</option>
+              <option value="market-making">AI-Powered Market Making</option>
+              <option value="settlement">Automated Settlement & Operations</option>
+              <option value="compliance">Compliance & Risk Monitoring</option>
+              <option value="other">Other</option>
             </select>
           </div>
           <div>
-            <label className="mono text-xs text-charcoal-brown block mb-2">PRIMARY RISK CONCERN</label>
+            <label className="mono text-xs text-charcoal-brown block mb-2">PRIMARY CONCERN</label>
             <textarea
               name="message"
               required
               className="w-full bg-floral-white border border-carbon-black/20 text-carbon-black px-4 py-3 focus:border-blood-red transition-colors font-bold h-32"
-              placeholder="e.g., Our agents are hallucinating physics, or we need to satisfy 2026 regulatory audit logs..."
+              placeholder="e.g., We need to validate our trading agents before production, or We're concerned about regulatory violations from AI errors..."
             ></textarea>
           </div>
           {formStatus.message && (
@@ -132,7 +134,7 @@ export default function InstitutionalForm() {
             disabled={isSubmitting}
             className="w-full bg-blood-red text-floral-white font-bold py-4 mt-4 hover:bg-deep-crimson transition-colors mono uppercase disabled:opacity-50"
           >
-            {isSubmitting ? 'SUBMITTING...' : 'Initialize Engagement'}
+            {isSubmitting ? 'SUBMITTING...' : 'Request Partnership'}
           </button>
         </form>
       </div>

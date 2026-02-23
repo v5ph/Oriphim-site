@@ -32,39 +32,38 @@ export default function CoreCompetencies() {
             </h2>
             <div className="h-1 w-20 bg-blood-red"></div>
           </div>
-          <p className="mono text-xs text-charcoal-brown mt-4 md:mt-0">INVARIANCE // COMPLIANCE // RECOVERY</p>
+          <p className="mono text-xs text-charcoal-brown mt-4 md:mt-0">PRE-EXECUTION // VALIDATION // COMPLIANCE</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="glass-panel p-8 hover:shadow-lg transition-all group">
             <div className="mono text-4xl text-charcoal-brown/40 mb-6 group-hover:text-blood-red transition-colors">01</div>
             <h3 className="text-xl font-bold mb-4 text-carbon-black">
-              The Law of Physical Invariance (The 424 Sentinel)
+              Mathematical Constraint Validation
             </h3>
             <p className="text-charcoal-brown leading-relaxed text-sm">
-              Probabilistic models are physically illiterate. Our V-Layer intercepts agentic proposals and
-              validates them against hard physical constraints—thermodynamics, stoichiometry, and market
-              protocols. If the math doesn't check out, the 424 Sentinel blocks execution in real-time.
+              Every AI trade is mathematically validated before execution. No fractional shares. Balance always ≥ 0. Position limits enforced. 
+              Oriphim blocks hallucinated actions that would violate the laws of finance—preventing the impossible from happening.
             </p>
           </div>
 
           <div className="glass-panel p-8 hover:shadow-lg transition-all group">
             <div className="mono text-4xl text-charcoal-brown/40 mb-6 group-hover:text-blood-red transition-colors">02</div>
-            <h3 className="text-xl font-bold mb-4 text-carbon-black">Audit-Ready Integrity (2026 Compliance)</h3>
+            <h3 className="text-xl font-bold mb-4 text-carbon-black">Real-Time Regulatory Compliance</h3>
             <p className="text-charcoal-brown leading-relaxed text-sm">
-              Governance isn't theater; it's infrastructure. We provide the immutable Chain-of-Thought logs
-              required to satisfy the 2026 regulatory cliff, including the EU AI Act and California's SB 243.
-              Turn your "Black Box" into a transparent, audit-ready asset.
+              Automatic detection of MiFID II, Dodd-Frank, wash sale, and pattern day trading violations. 
+              Your autonomous agents integrate regulatory rules at the source, not as an afterthought. 
+              Stop violations before regulators do.
             </p>
           </div>
 
           <div className="glass-panel p-8 hover:shadow-lg transition-all group">
             <div className="mono text-4xl text-charcoal-brown/40 mb-6 group-hover:text-blood-red transition-colors">03</div>
-            <h3 className="text-xl font-bold mb-4 text-carbon-black">Agent Rewind (State-Controlled Recovery)</h3>
+            <h3 className="text-xl font-bold mb-4 text-carbon-black">Audit-Ready Execution Logs</h3>
             <p className="text-charcoal-brown leading-relaxed text-sm">
-              When an agent drifts, you can't just kill the process; you need to restore the system. Our
-              protocol provides a version-controlled log of every agentic state change, allowing enterprises to
-              rollback a compromised system to a "Clean State" post-incident.
+              Cryptographically signed logs show *why* each action was approved or blocked. 
+              When regulators ask, you have proof your AI operated within guardrails. 
+              Transform compliance from liability to competitive advantage.
             </p>
           </div>
         </div>

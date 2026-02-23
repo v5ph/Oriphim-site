@@ -4,6 +4,7 @@ import Navigation from '@/components/Navigation'
 import HeroBanner from '@/components/HeroBanner'
 import CoreCompetencies from '@/components/CoreCompetencies'
 import AgenticAudit from '@/components/AgenticAudit'
+import TechnicalDifferentiators from '@/components/TechnicalDifferentiators'
 import InstitutionalForm from '@/components/InstitutionalForm'
 import Footer from '@/components/Footer'
 import ScrollReveal from '@/components/ScrollReveal'
@@ -23,6 +24,9 @@ export default function Home() {
         <AgenticAudit />
       </ScrollReveal>
       <ScrollReveal delay={150}>
+        <TechnicalDifferentiators />
+      </ScrollReveal>
+      <ScrollReveal delay={200}>
         <InstitutionalForm />
       </ScrollReveal>
       </div>

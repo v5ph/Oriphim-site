@@ -24,15 +24,6 @@ export default function Navigation() {
           <button onClick={() => scrollToSection('licensing')} className="hover:text-blood-red transition-colors">
             AUDIT & COMPLIANCE
           </button>
-          <Link href="/signin" className="hover:text-blood-red transition-colors">
-            SIGN IN
-          </Link>
-          <Link
-            href="/signup"
-            className="border border-blood-red/30 px-4 py-2 hover:bg-blood-red hover:text-floral-white transition-all"
-          >
-            SIGN UP
-          </Link>
         </div>
       </div>
     </nav>
