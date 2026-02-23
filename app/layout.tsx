@@ -15,6 +15,9 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'ORIPHIM | The Watcher Protocol for Deterministic Agency',
   description: 'AI Infrastructure for safety and integrity. Oriphim provides the deterministic gateway for high-stakes agentic workflows in BioPharma, Finance, and Aerospace.',
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({
