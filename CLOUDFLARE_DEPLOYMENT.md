@@ -2,8 +2,7 @@
 
 ## Prerequisites
 1. **Cloudflare Account** - Create one at https://dash.cloudflare.com
-2. **Wrangler CLI** - Already installed in your project
-3. **GitHub Repository** - Your code pushed to GitHub (required for Cloudflare Pages)
+2. **GitHub Repository** - Your code pushed to GitHub (required for Cloudflare Pages)
 
 ## Step 1: Connect Your GitHub Repository to Cloudflare Pages
 
@@ -72,15 +71,15 @@ This builds with standard Next.js and runs the production server locally on `loc
 
 ## Manual Deployment (Alternative)
 
-If you prefer not to use Git integration:
+If you prefer not to use Git integration, you can use Wrangler CLI:
 
 ```bash
-npm run deploy
+npm install -g @cloudflare/wrangler
+wrangler login
+wrangler pages deploy
 ```
 
-This requires:
-- Wrangler authentication: `wrangler login`
-- Creates a Cloudflare Pages project via CLI
+This creates and deploys to a Cloudflare Pages project via CLI (requires authentication)
 
 ## Environment Variables Setup in Cloudflare Dashboard
 
