@@ -50,6 +50,19 @@ Click **Save and Deploy**. Cloudflare will:
 3. Deploy from `.next/standalone`
 4. Provide you with a live URL
 
+## Step 3.5: Enable nodejs_compat Compatibility Flag (CRITICAL)
+
+After deployment, you **must** enable the compatibility flag:
+
+1. Go to **Pages** → **Oriphim-site** → **Settings**
+2. Scroll to **Compatibility Flags**
+3. Click **Add a flag**
+4. Search for and enable: `nodejs_compat`
+5. Enable for **both Production and Preview** environments
+6. Save
+
+⚠️ **This step is required** for the site to work on Cloudflare's edge network. Without it, you'll see "Node.JS Compatibility Error"
+
 ## Step 4: Custom Domain (Optional)
 
 After first deployment:
@@ -97,6 +110,11 @@ This creates and deploys to a Cloudflare Pages project via CLI (requires authent
 ✅ Test the form: Submit a request to verify Supabase integration works
 
 ## Troubleshooting
+
+**"Node.JS Compatibility Error" after deployment:**
+- Enable `nodejs_compat` flag in Pages Settings → Compatibility Flags
+- Must be enabled for both Production and Preview environments
+- After enabling, trigger a redeploy or wait for cache to clear (~5 minutes)
 
 **Build fails with "institutional_inquiries not found":**
 - This is normal - Supabase table check happens at runtime, not build time
