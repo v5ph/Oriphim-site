@@ -1,6 +1,5 @@
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import ScrollReveal from '@/components/ScrollReveal'
 
 export const metadata = {
   title: 'Legal & Terms of Use - Oriphim Labs',
@@ -13,7 +12,6 @@ export default function LegalPage() {
       <Navigation />
       
       <div className="max-w-4xl mx-auto px-6 py-24 mt-16">
-        <ScrollReveal>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-carbon-black">Legal & Terms of Use</h1>
           
           <p className="text-charcoal-brown mb-8">
@@ -23,10 +21,8 @@ export default function LegalPage() {
           <p className="text-charcoal-brown leading-relaxed mb-6">
             Oriphim Labs LLC ("Oriphim", "we", "our") provides AI validation infrastructure and compliance middleware to financial institutions and enterprise clients. By accessing or using any Oriphim product or service, you ("Client", "you") agree to the terms below.
           </p>
-        </ScrollReveal>
         
         <div className="prose prose-lg max-w-none">
-          <ScrollReveal delay={100}>
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">1. Service Definition</h2>
               <p className="text-charcoal-brown leading-relaxed mb-4">
@@ -43,9 +39,8 @@ export default function LegalPage() {
                 Clients retain full authority over whether to execute actions that pass validation. Oriphim’s role is limited to validation logic—execution discretion remains with the Client.
               </p>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={150}>
+
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">2. Licensing & Intellectual Property</h2>
               <p className="text-charcoal-brown leading-relaxed mb-4">
@@ -63,9 +58,8 @@ export default function LegalPage() {
                 Access rights, usage limits, deployment configurations, and pricing are governed by a separate <strong>Master Service Agreement (MSA)</strong> executed per client.
               </p>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={200}>
+
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">3. Validation Accuracy & Limitations</h2>
               <p className="text-charcoal-brown leading-relaxed mb-4">
@@ -88,9 +82,8 @@ export default function LegalPage() {
                 Oriphim is not liable for trading losses, regulatory violations, or operational failures resulting from validation errors, system outages, or Client misconfigurations.
               </p>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={250}>
+
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">4. Data Handling & Security</h2>
               <p className="text-charcoal-brown leading-relaxed mb-2"><strong>Data Access</strong></p>
@@ -106,9 +99,8 @@ export default function LegalPage() {
                 Clients are responsible for safeguarding API keys, implementing network-level access controls (IP whitelisting, VPNs), and rotating credentials per internal security policies. Oriphim reserves the right to suspend service immediately upon detecting credential compromise or abusive usage patterns.
               </p>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={300}>
+
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">5. Service Availability & Support</h2>
               <p className="text-charcoal-brown leading-relaxed mb-2"><strong>Uptime Commitment</strong></p>
@@ -130,18 +122,16 @@ export default function LegalPage() {
                 <li><strong>Standard:</strong> Business hours (9 AM – 6 PM ET, Mon–Fri)</li>
               </ul>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={350}>
+
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">6. Confidentiality</h2>
               <p className="text-charcoal-brown leading-relaxed">
                 All materials exchanged between Oriphim and Client are confidential and subject to mutual NDA terms, including validation rule configurations, integration documentation, performance metrics, validation statistics, and audit reports. Clients may not disclose Oriphim architecture, constraint definitions, or validation methodologies to third parties without explicit written consent.
               </p>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={400}>
+
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">7. Regulatory Compliance</h2>
               <p className="text-charcoal-brown leading-relaxed mb-2"><strong>Client Obligations</strong></p>
@@ -153,9 +143,8 @@ export default function LegalPage() {
                 In the event of regulatory inquiry, Oriphim will provide audit logs and technical documentation as legally required, with advance notice to Client where permitted.
               </p>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={450}>
+
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">8. Liability & Indemnification</h2>
               <p className="text-charcoal-brown leading-relaxed mb-2"><strong>Limitation of Liability</strong></p>
@@ -174,9 +163,8 @@ export default function LegalPage() {
                 Client agrees to indemnify and hold harmless Oriphim Labs LLC, its officers, employees, and affiliates against any claims, liabilities, or damages arising from misuse of validation infrastructure, Client’s execution of actions (whether validated or not), breach of confidentiality obligations, or violation of applicable laws or regulations.
               </p>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={500}>
+
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">9. Term & Termination</h2>
               <p className="text-charcoal-brown leading-relaxed mb-2"><strong>Contract Duration</strong></p>
@@ -191,9 +179,8 @@ export default function LegalPage() {
                 <li>Confidentiality obligations survive indefinitely</li>
               </ul>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={550}>
+
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">10. Amendments & Disputes</h2>
               <p className="text-charcoal-brown leading-relaxed mb-2"><strong>Changes to Terms</strong></p>
@@ -209,9 +196,8 @@ export default function LegalPage() {
                 Disputes shall be resolved through binding arbitration under JAMS rules (San Francisco, CA venue). Each party bears its own legal costs unless arbitrator rules otherwise.
               </p>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={600}>
+
             <section className="mb-8 p-6 bg-warm-ivory/50 rounded">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">11. Contact & Support</h2>
               <p className="text-charcoal-brown leading-relaxed mb-2"><strong>Legal Inquiries:</strong> <a href="mailto:legal@oriphim.com" className="text-blood-red hover:underline">legal@oriphim.com</a></p>
@@ -223,7 +209,6 @@ export default function LegalPage() {
               <p className="text-charcoal-brown mt-4"><em>Last Updated: January 1, 2026</em></p>
               <p className="text-charcoal-brown"><em>Version: 2.0 (Infrastructure Positioning)</em></p>
             </section>
-          </ScrollReveal>
         </div>
       </div>
 

@@ -1,6 +1,5 @@
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import ScrollReveal from '@/components/ScrollReveal'
 
 export const metadata = {
   title: 'Privacy Policy - Oriphim Labs',
@@ -13,7 +12,6 @@ export default function PrivacyPage() {
       <Navigation />
       
       <div className="max-w-4xl mx-auto px-6 py-24 mt-16">
-        <ScrollReveal>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-carbon-black">Privacy Policy</h1>
           
           <p className="text-charcoal-brown mb-8">
@@ -23,19 +21,16 @@ export default function PrivacyPage() {
           <p className="text-charcoal-brown leading-relaxed mb-8">
             Oriphim Labs LLC ("Oriphim", "we", "our") provides AI validation infrastructure to financial institutions and enterprise clients. This Privacy Policy explains how we collect, use, and safeguard data when you access our validation services.
           </p>
-        </ScrollReveal>
         
         <div className="prose prose-lg max-w-none">
-          <ScrollReveal delay={100}>
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">Data Minimization Principle</h2>
               <p className="text-charcoal-brown leading-relaxed">
                 <strong>Oriphim is designed to validate actions without accessing sensitive business logic.</strong> We operate on validation metadata only—not proprietary strategies, customer PII, or execution credentials.
               </p>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={150}>
+
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">Information We Collect</h2>
               <p className="text-charcoal-brown leading-relaxed mb-2"><strong>1. Account &amp; Access Data</strong></p>
@@ -70,9 +65,8 @@ export default function PrivacyPage() {
                 <li><strong>Contractual Documents:</strong> MSA terms, compliance questionnaires (stored securely)</li>
               </ul>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={200}>
+
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">How We Use Your Data</h2>
               <p className="text-charcoal-brown leading-relaxed mb-2"><strong>Primary Purposes</strong></p>
@@ -91,9 +85,8 @@ export default function PrivacyPage() {
                 <li><strong>Research:</strong> Develop improved constraint detection algorithms (using anonymized data only)</li>
               </ul>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={250}>
+
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">Data Sharing &amp; Third Parties</h2>
               <p className="text-charcoal-brown leading-relaxed mb-4">
@@ -111,9 +104,8 @@ export default function PrivacyPage() {
                 We may disclose data when legally required: court orders, subpoenas, regulatory requests, prevention of fraud or security threats, or protection of Oriphim’s legal rights. We provide advance notice to clients before disclosure unless legally prohibited.
               </p>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={300}>
+
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">Data Security Measures</h2>
               <p className="text-charcoal-brown leading-relaxed mb-2"><strong>Encryption</strong></p>
@@ -142,9 +134,8 @@ export default function PrivacyPage() {
                 <li><strong>GDPR/CCPA:</strong> Full compliance with data subject rights</li>
               </ul>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={350}>
+
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">Client Confidentiality</h2>
               <p className="text-charcoal-brown leading-relaxed mb-2"><strong>What We Keep Confidential</strong></p>
@@ -158,9 +149,8 @@ export default function PrivacyPage() {
                 We may publish anonymized, aggregate statistics without identifying individual clients.
               </p>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={400}>
+
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">Cookies &amp; Website Tracking</h2>
               <p className="text-charcoal-brown leading-relaxed mb-2"><strong>Minimal Tracking</strong></p>
@@ -172,9 +162,8 @@ export default function PrivacyPage() {
                 Authentication sessions use secure, HTTP-only cookies that expire after 24 hours.
               </p>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={450}>
+
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">Data Retention &amp; Deletion</h2>
               <p className="text-charcoal-brown leading-relaxed mb-2"><strong>Active Accounts</strong></p>
@@ -193,9 +182,8 @@ export default function PrivacyPage() {
                 Clients may request early deletion via <a href="mailto:support@oriphim.com" className="text-blood-red hover:underline">support@oriphim.com</a>. We comply within 30 days unless retention is legally mandated.
               </p>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={500}>
+
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">Your Privacy Rights</h2>
               <p className="text-charcoal-brown leading-relaxed mb-2"><strong>GDPR (EU Residents)</strong></p>
@@ -218,9 +206,8 @@ export default function PrivacyPage() {
                 Email <a href="mailto:privacy@oriphim.com" className="text-blood-red hover:underline">privacy@oriphim.com</a> with subject line “Privacy Rights Request” and include your name, company affiliation, account email, and specific request. We respond within 30 days and verify identity before fulfilling requests.
               </p>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={550}>
+
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">International Data Transfers</h2>
               <p className="text-charcoal-brown leading-relaxed mb-2"><strong>Data Residency</strong></p>
@@ -233,18 +220,16 @@ export default function PrivacyPage() {
                 Clients may request data residency specifications in their Master Service Agreement.
               </p>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={600}>
+
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">Children’s Privacy</h2>
               <p className="text-charcoal-brown leading-relaxed">
                 Oriphim services are intended for business and institutional use only. We do not knowingly collect data from individuals under 18 years of age.
               </p>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={650}>
+
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">Changes to This Policy</h2>
               <p className="text-charcoal-brown leading-relaxed mb-2"><strong>Notification Process</strong></p>
@@ -257,9 +242,8 @@ export default function PrivacyPage() {
                 Clients may request previous policy versions by emailing <a href="mailto:privacy@oriphim.com" className="text-blood-red hover:underline">privacy@oriphim.com</a>.
               </p>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={700}>
+
             <section className="mb-8 p-6 bg-warm-ivory/50 rounded">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">Contact &amp; Data Protection Officer</h2>
               <p className="text-charcoal-brown leading-relaxed mb-2"><strong>Privacy Inquiries:</strong> <a href="mailto:privacy@oriphim.com" className="text-blood-red hover:underline">privacy@oriphim.com</a></p>
@@ -270,9 +254,7 @@ export default function PrivacyPage() {
               <p className="text-charcoal-brown">Registered in Delaware, USA</p>
               <p className="text-charcoal-brown">EIN: [To be assigned]</p>
             </section>
-          </ScrollReveal>
 
-          <ScrollReveal delay={750}>
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">Regulatory Compliance Summary</h2>
               <div className="overflow-x-auto">
@@ -311,7 +293,6 @@ export default function PrivacyPage() {
               <p className="text-charcoal-brown"><em>Version: 2.0 (Infrastructure Positioning)</em></p>
               <p className="text-charcoal-brown">© 2026 Oriphim Labs LLC. All rights reserved.</p>
             </section>
-          </ScrollReveal>
         </div>
       </div>
 
