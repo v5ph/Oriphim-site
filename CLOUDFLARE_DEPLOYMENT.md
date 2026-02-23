@@ -24,12 +24,12 @@ When Cloudflare prompts for build configuration, use these settings:
 
 **Build command:** 
 ```
-npm run pages:build
+npm ci && npm run build
 ```
 
 **Build output directory:** 
 ```
-.vercel/output/static
+.next/standalone
 ```
 
 **Root directory (leave blank unless subdirectory):** 
@@ -47,8 +47,8 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY = sb_publishable_hRfPv4B86Qdsn2-hbbHIgA_2Z9K64Lq
 
 Click **Save and Deploy**. Cloudflare will:
 1. Clone your repository
-2. Run `npm run pages:build`
-3. Deploy the static output
+2. Run `npm ci && npm run build`
+3. Deploy from `.next/standalone`
 4. Provide you with a live URL
 
 ## Step 4: Custom Domain (Optional)
@@ -61,14 +61,14 @@ After first deployment:
 
 ## Local Testing Before Deployment
 
-To test the Cloudflare Pages build locally:
+To test the build locally:
 
 ```bash
-npm run pages:build
-npm run preview
+npm run build
+npm start
 ```
 
-This builds with `@cloudflare/next-on-pages` and runs locally on `localhost:8788`
+This builds with standard Next.js and runs the production server locally on `localhost:3000`
 
 ## Manual Deployment (Alternative)
 
