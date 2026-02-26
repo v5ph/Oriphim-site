@@ -39,12 +39,12 @@ export default function TechnicalDifferentiators() {
   ];
 
   return (
-    <section className="relative z-10 py-24 bg-floral-white border-t border-carbon-black/10">
+    <section id="licensing" className="relative z-10 py-24 bg-floral-white border-t border-carbon-black/10">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4 text-carbon-black">Why Oriphim Is Different</h2>
+          <h2 className="text-3xl font-bold mb-4 text-carbon-black">AI Solutions GreatUntil They Don't</h2>
           <p className="text-charcoal-brown max-w-2xl mx-auto">
-            Every approach to AI safety has a gap. Here's what makes us different—without the BS.
+            Monitoring, rule engines, approval gates—they all fail at the moment that matters. Here's where the gaps are, and why they're not acceptable at scale.
           </p>
         </div>
 
