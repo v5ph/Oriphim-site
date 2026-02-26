@@ -18,9 +18,6 @@ export default function Navigation() {
           <button onClick={() => scrollToSection('infrastructure')} className="hover:text-blood-red transition-colors">
             WATCHER PROTOCOL
           </button>
-          <button onClick={() => scrollToSection('quant-audit')} className="hover:text-blood-red transition-colors">
-            AGENT REWIND
-          </button>
           <button onClick={() => scrollToSection('licensing')} className="hover:text-blood-red transition-colors">
             AUDIT & COMPLIANCE
           </button>
