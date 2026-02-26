@@ -30,10 +30,12 @@ export default function HeroBanner() {
         pointerEvents: opacity === 0 ? 'none' : 'auto',
         height: '100vh',
       }}
+      role="banner"
+      aria-label="Hero banner image"
     >
       <Image
         src="/assets/images/Oriphim-homepage.png"
-        alt="ORIPHIM - Watcher Protocol"
+        alt="ORIPHIM - Watcher Protocol for AI validation and compliance"
         fill
         className="object-cover"
         priority

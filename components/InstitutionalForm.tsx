@@ -1,11 +1,18 @@
 'use client'
 
 import { useState, FormEvent } from 'react';
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from '@/lib/supabase';
 
-const supabaseUrl = 'https://suzmovbxrxqxzqzcqnlu.supabase.co';
-const supabaseKey = 'sb_publishable_hRfPv4B86Qdsn2-hbbHIgA_2Z9K64Lq';
-const supabase = createClient(supabaseUrl, supabaseKey);
+const validateEmail = (email: string): boolean => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
+
+const validateAUM = (aum: string): boolean => {
+  // Must contain a number and either M, B, or million/billion
+  const aumRegex = /\$?\d+(\.\d+)?[MB]|\d+\s*(million|billion)/i;
+  return aumRegex.test(aum);
+};
 
 export default function InstitutionalForm() {
   const [formStatus, setFormStatus] = useState<{
@@ -13,20 +20,46 @@ export default function InstitutionalForm() {
     type: 'success' | 'error' | '';
   }>({ message: '', type: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setValidationErrors({});
     setFormStatus({ message: 'Processing your request...', type: '' });
 
     try {
       const formData = new FormData(e.currentTarget);
+      const email = formData.get('email') as string;
+      const capitalBase = formData.get('capital_base') as string;
+      
+      // Client-side validation
+      const errors: Record<string, string> = {};
+      
+      if (!validateEmail(email)) {
+        errors.email = 'Please enter a valid email address';
+      }
+      
+      if (!validateAUM(capitalBase)) {
+        errors.capital_base = 'Please enter AUM in format like "$500M" or "$2B"';
+      }
+      
+      if (Object.keys(errors).length > 0) {
+        setValidationErrors(errors);
+        setFormStatus({
+          message: 'Please correct the errors above',
+          type: 'error',
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
       const data = {
-        institution: formData.get('institution') as string,
-        email: formData.get('email') as string,
-        capital_base: formData.get('capital_base') as string,
+        institution: (formData.get('institution') as string).trim(),
+        email: email.trim().toLowerCase(),
+        capital_base: capitalBase.trim(),
         integration: formData.get('integration') as string,
-        message: formData.get('message') as string,
+        message: (formData.get('message') as string).trim(),
         submitted_at: new Date().toISOString(),
       };
 
@@ -67,6 +100,7 @@ export default function InstitutionalForm() {
               type="text"
               name="institution"
               required
+              aria-label="Firm name"
               className="w-full bg-floral-white border border-carbon-black/20 text-carbon-black px-4 py-3 focus:border-blood-red transition-colors font-bold"
               placeholder="Your Hedge Fund or Financial Institution"
             />
@@ -77,9 +111,16 @@ export default function InstitutionalForm() {
               type="email"
               name="email"
               required
-              className="w-full bg-floral-white border border-carbon-black/20 text-carbon-black px-4 py-3 focus:border-blood-red transition-colors font-bold"
+              aria-label="Contact email"
+              aria-invalid={validationErrors.email ? 'true' : 'false'}
+              className={`w-full bg-floral-white border ${
+                validationErrors.email ? 'border-blood-red' : 'border-carbon-black/20'
+              } text-carbon-black px-4 py-3 focus:border-blood-red transition-colors font-bold`}
               placeholder="your@firm.com"
             />
+            {validationErrors.email && (
+              <p className="text-blood-red text-xs mt-1">{validationErrors.email}</p>
+            )}
           </div>
           <div>
             <label className="mono text-xs text-charcoal-brown block mb-2">ASSETS UNDER MANAGEMENT</label>
@@ -87,15 +128,23 @@ export default function InstitutionalForm() {
               type="text"
               name="capital_base"
               required
-              className="w-full bg-floral-white border border-carbon-black/20 text-carbon-black px-4 py-3 focus:border-blood-red transition-colors font-bold"
+              aria-label="Assets under management"
+              aria-invalid={validationErrors.capital_base ? 'true' : 'false'}
+              className={`w-full bg-floral-white border ${
+                validationErrors.capital_base ? 'border-blood-red' : 'border-carbon-black/20'
+              } text-carbon-black px-4 py-3 focus:border-blood-red transition-colors font-bold`}
               placeholder="e.g. $500M, $2B"
             />
+            {validationErrors.capital_base && (
+              <p className="text-blood-red text-xs mt-1">{validationErrors.capital_base}</p>
+            )}
           </div>
           <div>
             <label className="mono text-xs text-charcoal-brown block mb-2">AI USE CASE</label>
             <select
               name="integration"
               required
+              aria-label="AI use case"
               className="w-full bg-floral-white border border-carbon-black/20 text-carbon-black px-4 py-3 focus:border-blood-red transition-colors font-bold"
             >
               <option value="">Select Your AI Use Case</option>
@@ -112,6 +161,7 @@ export default function InstitutionalForm() {
             <textarea
               name="message"
               required
+              aria-label="Primary concern"
               className="w-full bg-floral-white border border-carbon-black/20 text-carbon-black px-4 py-3 focus:border-blood-red transition-colors font-bold h-32"
               placeholder="e.g., We need to validate our trading agents before production, or We're concerned about regulatory violations from AI errors..."
             ></textarea>

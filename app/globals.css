@@ -51,3 +51,48 @@ body {
 .glow-text {
   text-shadow: 0 0 20px rgba(139, 0, 0, 0.3);
 }
+
+/* Accessibility: Focus indicators */
+*:focus-visible {
+  outline: 2px solid var(--blood-red);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--blood-red);
+  outline-offset: 2px;
+}
+
+/* Skip to main content link for screen readers */
+.skip-to-main {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 1em;
+  background-color: var(--blood-red);
+  color: var(--floral-white);
+  text-decoration: none;
+}
+
+.skip-to-main:focus {
+  left: 50%;
+  transform: translateX(-50%);
+  top: 1em;
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

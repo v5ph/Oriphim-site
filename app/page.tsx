@@ -11,7 +11,7 @@ import ScrollReveal from '@/components/ScrollReveal'
 
 export default function Home() {
   return (
-    <main className="bg-grid relative">
+    <main className="bg-grid relative" role="main" id="main-content">
       <Navigation />
       <HeroBanner />
       
