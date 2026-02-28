@@ -40,7 +40,7 @@ export default function Navigation() {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="md:hidden flex flex-col gap-1.5 w-6 h-6 justify-center"
           aria-label="Toggle menu"
-          aria-expanded={mobileMenuOpen ? 'true' : 'false'}
+          aria-expanded={mobileMenuOpen}
         >
           <span className={`w-full h-0.5 bg-carbon-black transition-transform ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
           <span className={`w-full h-0.5 bg-carbon-black transition-opacity ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>

@@ -116,7 +116,7 @@ export default function InstitutionalForm() {
               name="email"
               required
               aria-label="Contact email"
-              aria-invalid={validationErrors.email ? 'true' : 'false'}
+              aria-invalid={validationErrors.email ? true : false}
               className={`w-full bg-floral-white border ${
                 validationErrors.email ? 'border-blood-red' : 'border-carbon-black/20'
               } text-carbon-black px-4 py-3 focus:border-blood-red transition-colors font-bold`}
@@ -133,7 +133,7 @@ export default function InstitutionalForm() {
               name="capital_base"
               required
               aria-label="Assets under management"
-              aria-invalid={validationErrors.capital_base ? 'true' : 'false'}
+              aria-invalid={validationErrors.capital_base ? true : false}
               className={`w-full bg-floral-white border ${
                 validationErrors.capital_base ? 'border-blood-red' : 'border-carbon-black/20'
               } text-carbon-black px-4 py-3 focus:border-blood-red transition-colors font-bold`}

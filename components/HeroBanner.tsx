@@ -21,6 +21,7 @@ export default function HeroBanner() {
   const scale = 1 - scrollY / 1000
 
   return (
+    // eslint-disable-next-line @next/next/no-css-in-js-documents
     <div
       className="fixed top-0 left-0 w-full z-0 overflow-hidden"
       style={{
