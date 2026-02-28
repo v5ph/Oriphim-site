@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, FormEvent } from 'react';
-import { supabase } from '@/lib/supabase';
 
 const validateEmail = (email: string): boolean => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -71,7 +70,11 @@ export default function InstitutionalForm() {
         message: '✓ Engagement request received. Our team will contact you within 48 hours.',
         type: 'success',
       });
-      e.currentTarget.reset();
+      
+      // Reset form only if it exists
+      if (e.currentTarget) {
+        e.currentTarget.reset();
+      }
     } catch (error) {
       console.error('Error submitting form:', error);
       setFormStatus({
