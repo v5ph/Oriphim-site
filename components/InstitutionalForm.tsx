@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, FormEvent } from 'react';
+import { supabase } from '@/lib/supabase';
 
 const validateEmail = (email: string): boolean => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
