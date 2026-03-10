@@ -88,68 +88,70 @@ export default function InstitutionalForm() {
   };
 
   return (
-    <section id="access" className="relative z-10 py-24 bg-space-indigo/10 border-t border-carbon-black/10">
+    <section id="access" className="relative z-10 py-24 bg-bg-primary border-t border-brand-green/20">
       <div className="max-w-4xl mx-auto px-6 text-center">
-        <h2 className="text-3xl font-bold mb-6 text-carbon-black">Financial Institution Partnership</h2>
-        <p className="text-charcoal-brown mb-12">
-          <span className="text-carbon-black font-bold">Note:</span> We accept{' '}
-          <span className="text-blood-red font-bold">1 hedge fund or financial institution per quarter</span> for deep integration.
+        <h2 className="text-3xl font-bold mb-6 text-text-primary">Financial Institution Partnership</h2>
+        <p className="text-text-secondary mb-12">
+          <span className="text-text-primary font-bold">Note:</span> We accept{' '}
+          <span className="text-brand-green font-bold">1 hedge fund or financial institution per quarter</span> for deep integration.
           This ensures white-glove onboarding and dedicated validation infrastructure.
         </p>
 
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4 text-left">
+        <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4 text-left glass-panel p-6 md:p-8">
           <div>
-            <label className="mono text-xs text-charcoal-brown block mb-2">FIRM NAME</label>
+            <label className="mono text-xs text-text-secondary block mb-2">FIRM NAME</label>
             <input
+              suppressHydrationWarning
               type="text"
               name="institution"
               required
               aria-label="Firm name"
-              className="w-full bg-floral-white border border-carbon-black/20 text-carbon-black px-4 py-3 focus:border-blood-red transition-colors font-bold"
+              className="w-full bg-panel border border-brand-green/25 text-text-primary px-4 py-3 focus:border-accent-green transition-colors font-bold"
               placeholder="Your Hedge Fund or Financial Institution"
             />
           </div>
           <div>
-            <label className="mono text-xs text-charcoal-brown block mb-2">CONTACT EMAIL</label>
+            <label className="mono text-xs text-text-secondary block mb-2">CONTACT EMAIL</label>
             <input
+              suppressHydrationWarning
               type="email"
               name="email"
               required
               aria-label="Contact email"
-              aria-invalid={validationErrors.email ? true : false}
-              className={`w-full bg-floral-white border ${
-                validationErrors.email ? 'border-blood-red' : 'border-carbon-black/20'
-              } text-carbon-black px-4 py-3 focus:border-blood-red transition-colors font-bold`}
+              className={`w-full bg-panel border ${
+                validationErrors.email ? 'border-brand-green' : 'border-brand-green/25'
+              } text-text-primary px-4 py-3 focus:border-accent-green transition-colors font-bold`}
               placeholder="your@firm.com"
             />
             {validationErrors.email && (
-              <p className="text-blood-red text-xs mt-1">{validationErrors.email}</p>
+              <p className="text-brand-green text-xs mt-1">{validationErrors.email}</p>
             )}
           </div>
           <div>
-            <label className="mono text-xs text-charcoal-brown block mb-2">ASSETS UNDER MANAGEMENT</label>
+            <label className="mono text-xs text-text-secondary block mb-2">ASSETS UNDER MANAGEMENT</label>
             <input
+              suppressHydrationWarning
               type="text"
               name="capital_base"
               required
               aria-label="Assets under management"
-              aria-invalid={validationErrors.capital_base ? true : false}
-              className={`w-full bg-floral-white border ${
-                validationErrors.capital_base ? 'border-blood-red' : 'border-carbon-black/20'
-              } text-carbon-black px-4 py-3 focus:border-blood-red transition-colors font-bold`}
+              className={`w-full bg-panel border ${
+                validationErrors.capital_base ? 'border-brand-green' : 'border-brand-green/25'
+              } text-text-primary px-4 py-3 focus:border-accent-green transition-colors font-bold`}
               placeholder="e.g. $500M, $2B"
             />
             {validationErrors.capital_base && (
-              <p className="text-blood-red text-xs mt-1">{validationErrors.capital_base}</p>
+              <p className="text-brand-green text-xs mt-1">{validationErrors.capital_base}</p>
             )}
           </div>
           <div>
-            <label className="mono text-xs text-charcoal-brown block mb-2">AI USE CASE</label>
+            <label className="mono text-xs text-text-secondary block mb-2">AI USE CASE</label>
             <select
+              suppressHydrationWarning
               name="integration"
               required
               aria-label="AI use case"
-              className="w-full bg-floral-white border border-carbon-black/20 text-carbon-black px-4 py-3 focus:border-blood-red transition-colors font-bold"
+              className="w-full bg-panel border border-brand-green/25 text-text-primary px-4 py-3 focus:border-accent-green transition-colors font-bold"
             >
               <option value="">Select Your AI Use Case</option>
               <option value="algorithmic-trading">Algorithmic Trading Agents</option>
@@ -161,12 +163,12 @@ export default function InstitutionalForm() {
             </select>
           </div>
           <div>
-            <label className="mono text-xs text-charcoal-brown block mb-2">PRIMARY CONCERN</label>
+            <label className="mono text-xs text-text-secondary block mb-2">PRIMARY CONCERN</label>
             <textarea
               name="message"
               required
               aria-label="Primary concern"
-              className="w-full bg-floral-white border border-carbon-black/20 text-carbon-black px-4 py-3 focus:border-blood-red transition-colors font-bold h-32"
+              className="w-full bg-panel border border-brand-green/25 text-text-primary px-4 py-3 focus:border-accent-green transition-colors font-bold h-32"
               placeholder="e.g., We need to validate our trading agents before production, or We're concerned about regulatory violations from AI errors..."
             ></textarea>
           </div>
@@ -174,19 +176,20 @@ export default function InstitutionalForm() {
             <div
               className={`text-sm text-center py-2 ${
                 formStatus.type === 'success'
-                  ? 'text-blood-red'
+                  ? 'text-accent-green'
                   : formStatus.type === 'error'
-                  ? 'text-deep-crimson'
-                  : 'text-charcoal-brown'
+                  ? 'text-brand-green'
+                  : 'text-text-secondary'
               }`}
             >
               {formStatus.message}
             </div>
           )}
           <button
+            suppressHydrationWarning
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-blood-red text-floral-white font-bold py-4 mt-4 hover:bg-deep-crimson transition-colors mono uppercase disabled:opacity-50"
+            className="w-full bg-brand-green text-bg-primary font-bold py-4 mt-4 hover:bg-accent-green transition-colors mono uppercase disabled:opacity-50"
           >
             {isSubmitting ? 'SUBMITTING...' : 'Request Partnership'}
           </button>

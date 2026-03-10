@@ -10,15 +10,15 @@ export default function GlobalError({
   return (
     <html>
       <body>
-        <div className="min-h-screen flex items-center justify-center bg-floral-white px-6">
-          <div className="max-w-md text-center">
-            <h2 className="text-3xl font-bold mb-4 text-carbon-black">Critical Error</h2>
-            <p className="text-charcoal-brown mb-8">
+        <div className="min-h-screen flex items-center justify-center bg-bg-primary px-6">
+          <div className="max-w-md text-center glass-panel p-8">
+            <h2 className="text-3xl font-bold mb-4 text-text-primary">Critical Error</h2>
+            <p className="text-text-secondary mb-8">
               A critical error occurred. Please refresh the page or contact support.
             </p>
             <button
               onClick={reset}
-              className="px-6 py-3 bg-blood-red text-floral-white rounded hover:bg-blood-red/90 transition-colors font-bold"
+              className="px-6 py-3 bg-brand-green text-bg-primary rounded hover:bg-accent-green transition-colors font-bold"
             >
               Refresh Page
             </button>

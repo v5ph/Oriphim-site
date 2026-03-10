@@ -1,17 +1,18 @@
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import type { Metadata } from 'next'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Service Level Agreement - Oriphim Labs',
   description: 'Service level commitments for Oriphim AI validation infrastructure.'
 }
 
 export default function SLAPage() {
   return (
-    <main className="bg-grid relative">
+    <main className="bg-grid relative min-h-screen">
       <Navigation />
       
-      <div className="max-w-4xl mx-auto px-6 py-24 mt-16">
+      <div className="max-w-4xl mx-auto px-6 py-24 mt-16 policy-content">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-carbon-black">Service Level Agreement (SLA)</h1>
           
           <p className="text-charcoal-brown mb-8">
@@ -22,7 +23,7 @@ export default function SLAPage() {
             This Service Level Agreement ("SLA") defines the operational commitments, support scope, and responsibilities for Oriphim's AI validation infrastructure. It applies to all active clients under a Master Service Agreement with Oriphim Labs LLC ("Oriphim", "we", "our").
           </p>
         
-        <div className="prose prose-lg max-w-none">
+        <div className="prose prose-lg max-w-none policy-content">
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">1. Service Availability</h2>
               <h3 className="text-xl font-semibold text-carbon-black mb-3 mt-6">Uptime Commitment</h3>

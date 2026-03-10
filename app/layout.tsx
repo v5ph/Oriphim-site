@@ -1,15 +1,19 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Space_Grotesk, JetBrains_Mono } from 'next/font/google'
+import { Space_Grotesk, Space_Mono } from 'next/font/google'
 
-const spaceGrotesk = Space_Grotesk({ 
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
   variable: '--font-space-grotesk',
+  display: 'swap',
 })
 
-const jetbrainsMono = JetBrains_Mono({ 
+const spaceMono = Space_Mono({
   subsets: ['latin'],
-  variable: '--font-jetbrains-mono',
+  weight: ['400', '700'],
+  variable: '--font-space-mono',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -67,7 +71,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased`}>
+      <body className={`${spaceGrotesk.variable} ${spaceMono.variable} antialiased`}>
         <a href="#main-content" className="skip-to-main">
           Skip to main content
         </a>

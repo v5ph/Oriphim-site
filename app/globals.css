@@ -10,51 +10,62 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'HVKiloV2';
+  src: url('/assets/fonts/HVKiloV2.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  /* Color Palette */
-  --charcoal-brown: #414535;
-  --carbon-black: #1e1e1d;
-  --floral-white: #f9f6ee;
-  --blood-red: #8b0000;
-  --deep-crimson: #981515;
-  --space-indigo: #353956;
+  --bg-primary: #0b0f0e;
+  --bg-panel: #1b1f1d;
+  --brand-green: #2fa36b;
+  --accent-green: #6ed7a0;
+  --text-primary: #ededed;
+  --text-secondary: #9aa3a0;
 }
 
 body {
   font-family: var(--font-space-grotesk), 'Space Grotesk', sans-serif;
-  background-color: var(--floral-white);
-  color: var(--carbon-black);
+  background:
+    radial-gradient(circle at 12% 10%, rgba(110, 215, 160, 0.14), transparent 30%),
+    radial-gradient(circle at 90% 8%, rgba(47, 163, 107, 0.12), transparent 26%),
+    var(--bg-primary);
+  color: var(--text-primary);
   overflow-x: hidden;
 }
 
 .mono {
-  font-family: var(--font-space-grotesk), 'Space Grotesk', sans-serif;
+  font-family: var(--font-space-mono), 'Space Mono', monospace;
 }
 
 .logo {
-  font-family: 'ASIX-FOUNDER', var(--font-space-grotesk), 'Space Grotesk', sans-serif;
+  font-family: 'ASIX-FOUNDER', 'HVKiloV2', 'Segoe UI', sans-serif;
 }
 
 .bg-grid {
   background-size: 40px 40px;
-  background-image: linear-gradient(to right, rgba(30, 30, 29, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(30, 30, 29, 0.03) 1px, transparent 1px);
+  background-image: linear-gradient(to right, rgba(110, 215, 160, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(110, 215, 160, 0.06) 1px, transparent 1px);
 }
 
 .glass-panel {
-  background: rgba(249, 246, 238, 0.85);
+  background: rgba(27, 31, 29, 0.88);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(30, 30, 29, 0.08);
+  border: 1px solid rgba(110, 215, 160, 0.18);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
 }
 
 .glow-text {
-  text-shadow: 0 0 20px rgba(139, 0, 0, 0.3);
+  text-shadow: 0 0 22px rgba(110, 215, 160, 0.38);
 }
 
 /* Accessibility: Focus indicators */
 *:focus-visible {
-  outline: 2px solid var(--blood-red);
+  outline: 2px solid var(--brand-green);
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -64,7 +75,7 @@ a:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid var(--blood-red);
+  outline: 2px solid var(--brand-green);
   outline-offset: 2px;
 }
 
@@ -74,8 +85,8 @@ textarea:focus-visible {
   left: -9999px;
   z-index: 999;
   padding: 1em;
-  background-color: var(--blood-red);
-  color: var(--floral-white);
+  background-color: var(--brand-green);
+  color: var(--bg-primary);
   text-decoration: none;
 }
 
@@ -83,6 +94,31 @@ textarea:focus-visible {
   left: 50%;
   transform: translateX(-50%);
   top: 1em;
+}
+
+.policy-content {
+  color: var(--text-secondary);
+}
+
+.policy-content :where(h1, h2, h3, h4, h5, h6) {
+  color: var(--text-primary);
+}
+
+.policy-content :where(a) {
+  color: var(--brand-green);
+}
+
+.policy-content :where(a:hover) {
+  color: var(--accent-green);
+}
+
+.policy-content :where(strong, code) {
+  color: var(--text-primary);
+}
+
+.policy-content :where(table) {
+  background: rgba(27, 31, 29, 0.65);
+  border: 1px solid rgba(110, 215, 160, 0.2);
 }
 
 /* Reduced motion for accessibility */

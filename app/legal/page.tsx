@@ -1,17 +1,18 @@
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import type { Metadata } from 'next'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Legal & Terms of Use - Oriphim Labs',
   description: 'Legal terms for Oriphim AI validation infrastructure and compliance middleware.'
 }
 
 export default function LegalPage() {
   return (
-    <main className="bg-grid relative">
+    <main className="bg-grid relative min-h-screen">
       <Navigation />
       
-      <div className="max-w-4xl mx-auto px-6 py-24 mt-16">
+      <div className="max-w-4xl mx-auto px-6 py-24 mt-16 policy-content">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-carbon-black">Legal & Terms of Use</h1>
           
           <p className="text-charcoal-brown mb-8">
@@ -22,7 +23,7 @@ export default function LegalPage() {
             Oriphim Labs LLC ("Oriphim", "we", "our") provides AI validation infrastructure and compliance middleware to financial institutions and enterprise clients. By accessing or using any Oriphim product or service, you ("Client", "you") agree to the terms below.
           </p>
         
-        <div className="prose prose-lg max-w-none">
+        <div className="prose prose-lg max-w-none policy-content">
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-carbon-black mb-4">1. Service Definition</h2>
               <p className="text-charcoal-brown leading-relaxed mb-4">

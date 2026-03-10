@@ -1,7 +1,7 @@
 'use client'
 
 import Navigation from '@/components/Navigation'
-import HeroBanner from '@/components/HeroBanner'
+import Hero from '@/components/Hero'
 import CoreCompetencies from '@/components/CoreCompetencies'
 import AgenticAudit from '@/components/AgenticAudit'
 import TechnicalDifferentiators from '@/components/TechnicalDifferentiators'
@@ -13,10 +13,10 @@ export default function Home() {
   return (
     <main className="bg-grid relative" role="main" id="main-content">
       <Navigation />
-      <HeroBanner />
-      
-      {/* Add padding to push content below banner */}
-      <div className="relative z-10 pt-96">
+      <div className="relative z-10">
+        <ScrollReveal>
+          <Hero />
+        </ScrollReveal>
         <ScrollReveal>
           <CoreCompetencies />
         </ScrollReveal>
