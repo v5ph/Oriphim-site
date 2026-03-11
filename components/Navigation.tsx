@@ -2,9 +2,32 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import type { MouseEvent } from 'react'
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const handleGlassMouseMove = (event: MouseEvent<HTMLButtonElement>) => {
+    const { currentTarget, clientX, clientY } = event;
+    const rect = currentTarget.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
+
+    const rotateY = ((x / rect.width) - 0.5) * 6;
+    const rotateX = (0.5 - (y / rect.height)) * 6;
+
+    currentTarget.style.setProperty('--mx', `${x}px`);
+    currentTarget.style.setProperty('--my', `${y}px`);
+    currentTarget.style.setProperty('--tilt-x', `${rotateX}deg`);
+    currentTarget.style.setProperty('--tilt-y', `${rotateY}deg`);
+  };
+
+  const handleGlassMouseLeave = (event: MouseEvent<HTMLButtonElement>) => {
+    event.currentTarget.style.setProperty('--mx', '50%');
+    event.currentTarget.style.setProperty('--my', '50%');
+    event.currentTarget.style.setProperty('--tilt-x', '0deg');
+    event.currentTarget.style.setProperty('--tilt-y', '0deg');
+  };
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -29,8 +52,10 @@ export default function Navigation() {
           </button>
           <button
             suppressHydrationWarning
-            onClick={() => scrollToSection('access')} 
-            className="px-4 py-2 bg-brand-green text-bg-primary rounded hover:bg-accent-green transition-colors font-semibold"
+            onClick={() => scrollToSection('access')}
+            onMouseMove={handleGlassMouseMove}
+            onMouseLeave={handleGlassMouseLeave}
+            className="px-4 py-2 rounded-lg glass-nav-button font-semibold"
           >
             BOOK DEMO
           </button>
@@ -39,7 +64,7 @@ export default function Navigation() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden flex flex-col gap-1.5 w-6 h-6 justify-center"
+          className="md:hidden flex flex-col gap-1.5 w-6 h-6 justify-center rounded"
           aria-label="Toggle menu"
         >
           <span className={`w-full h-0.5 bg-text-primary transition-transform ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
@@ -60,8 +85,10 @@ export default function Navigation() {
             </button>
             <button
               suppressHydrationWarning
-              onClick={() => scrollToSection('access')} 
-              className="px-4 py-2 bg-brand-green text-bg-primary rounded hover:bg-accent-green transition-colors font-semibold text-center"
+              onClick={() => scrollToSection('access')}
+              onMouseMove={handleGlassMouseMove}
+              onMouseLeave={handleGlassMouseLeave}
+              className="px-4 py-2 rounded-lg glass-nav-button font-semibold text-center"
             >
               BOOK DEMO
             </button>

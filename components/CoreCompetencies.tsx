@@ -6,7 +6,7 @@ export default function CoreCompetencies() {
   const sectionRef = useRef<HTMLElement>(null)
 
   return (
-    <section ref={sectionRef} id="infrastructure" className="relative z-10 py-24 border-t border-brand-green/20 bg-panel/70">
+    <section ref={sectionRef} id="infrastructure" className="relative z-10 py-24 border-t border-brand-green/20">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16">
           <div>
@@ -17,7 +17,7 @@ export default function CoreCompetencies() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="glass-panel p-8 transition-all group hover:-translate-y-1">
+          <div className="glass-panel rounded-2xl p-8 transition-all group hover:-translate-y-1">
             <div className="mono text-4xl text-text-secondary/40 mb-6 group-hover:text-accent-green transition-colors">01</div>
             <h3 className="text-xl font-bold mb-4 text-text-primary">
               Mathematical Constraint Validation
@@ -28,7 +28,7 @@ export default function CoreCompetencies() {
             </p>
           </div>
 
-          <div className="glass-panel p-8 transition-all group hover:-translate-y-1">
+          <div className="glass-panel rounded-2xl p-8 transition-all group hover:-translate-y-1">
             <div className="mono text-4xl text-text-secondary/40 mb-6 group-hover:text-accent-green transition-colors">02</div>
             <h3 className="text-xl font-bold mb-4 text-text-primary">Real-Time Regulatory Compliance</h3>
             <p className="text-text-secondary leading-relaxed text-sm">
@@ -38,7 +38,7 @@ export default function CoreCompetencies() {
             </p>
           </div>
 
-          <div className="glass-panel p-8 transition-all group hover:-translate-y-1">
+          <div className="glass-panel rounded-2xl p-8 transition-all group hover:-translate-y-1">
             <div className="mono text-4xl text-text-secondary/40 mb-6 group-hover:text-accent-green transition-colors">03</div>
             <h3 className="text-xl font-bold mb-4 text-text-primary">Audit-Ready Execution Logs</h3>
             <p className="text-text-secondary leading-relaxed text-sm">

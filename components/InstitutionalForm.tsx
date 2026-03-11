@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, MouseEvent } from 'react';
 import { supabase } from '@/lib/supabase';
 
 const validateEmail = (email: string): boolean => {
@@ -21,6 +21,21 @@ export default function InstitutionalForm() {
   }>({ message: '', type: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
+
+  const handleGlassMouseMove = (event: MouseEvent<HTMLButtonElement>) => {
+    const { currentTarget, clientX, clientY } = event;
+    const rect = currentTarget.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
+
+    currentTarget.style.setProperty('--mx', `${x}px`);
+    currentTarget.style.setProperty('--my', `${y}px`);
+  };
+
+  const handleGlassMouseLeave = (event: MouseEvent<HTMLButtonElement>) => {
+    event.currentTarget.style.setProperty('--mx', '50%');
+    event.currentTarget.style.setProperty('--my', '50%');
+  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -88,7 +103,7 @@ export default function InstitutionalForm() {
   };
 
   return (
-    <section id="access" className="relative z-10 py-24 bg-bg-primary border-t border-brand-green/20">
+    <section id="access" className="relative z-10 py-24 border-t border-brand-green/20">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <h2 className="text-3xl font-bold mb-6 text-text-primary">Financial Institution Partnership</h2>
         <p className="text-text-secondary mb-12">
@@ -97,7 +112,7 @@ export default function InstitutionalForm() {
           This ensures white-glove onboarding and dedicated validation infrastructure.
         </p>
 
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4 text-left glass-panel p-6 md:p-8">
+        <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4 text-left glass-panel rounded-2xl p-6 md:p-8">
           <div>
             <label className="mono text-xs text-text-secondary block mb-2">FIRM NAME</label>
             <input
@@ -189,7 +204,9 @@ export default function InstitutionalForm() {
             suppressHydrationWarning
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-brand-green text-bg-primary font-bold py-4 mt-4 hover:bg-accent-green transition-colors mono uppercase disabled:opacity-50"
+            onMouseMove={handleGlassMouseMove}
+            onMouseLeave={handleGlassMouseLeave}
+            className="w-full glass-green-button text-white font-bold py-4 mt-4 rounded-lg mono uppercase disabled:opacity-50"
           >
             {isSubmitting ? 'SUBMITTING...' : 'Request Partnership'}
           </button>

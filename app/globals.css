@@ -28,13 +28,27 @@
 }
 
 body {
+  position: relative;
   font-family: var(--font-space-grotesk), 'Space Grotesk', sans-serif;
-  background:
-    radial-gradient(circle at 12% 10%, rgba(110, 215, 160, 0.14), transparent 30%),
-    radial-gradient(circle at 90% 8%, rgba(47, 163, 107, 0.12), transparent 26%),
-    var(--bg-primary);
+  background: linear-gradient(180deg, #060807 0%, #0b0f0e 35%, #113223 100%);
+  background-attachment: fixed;
   color: var(--text-primary);
   overflow-x: hidden;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.16;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.22) 0.5px, transparent 1px),
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.16) 0.5px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.16) 0.5px, transparent 1px);
+  background-size: 3px 3px, 4px 4px, 2px 2px;
+  mix-blend-mode: soft-light;
 }
 
 .mono {
@@ -46,9 +60,7 @@ body {
 }
 
 .bg-grid {
-  background-size: 40px 40px;
-  background-image: linear-gradient(to right, rgba(110, 215, 160, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(110, 215, 160, 0.06) 1px, transparent 1px);
+  background-image: none;
 }
 
 .glass-panel {
@@ -56,11 +68,106 @@ body {
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(110, 215, 160, 0.18);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.glass-nav-button {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.12);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  transform: perspective(800px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) scale(1);
+  transition:
+    transform 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    filter 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, filter;
+}
+
+.glass-nav-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    140px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, 0.28),
+    rgba(255, 255, 255, 0) 62%
+  );
+  opacity: 0;
+  transition: opacity 240ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-nav-button:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.34);
+  filter: brightness(1.08);
+  transform: perspective(800px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) scale(1.03);
+}
+
+.glass-nav-button:hover::before {
+  opacity: 1;
+}
+
+.glass-nav-button:focus-visible {
+  border-color: rgba(255, 255, 255, 0.34);
+}
+
+.glass-green-button {
+  position: relative;
+  overflow: hidden;
+  background: rgba(47, 163, 107, 0.24);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(110, 215, 160, 0.34);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(175, 255, 221, 0.2);
+  color: #ffffff;
+  transition:
+    transform 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    filter 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-green-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    120px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, 0.24),
+    rgba(255, 255, 255, 0) 62%
+  );
+  opacity: 0;
+  transition: opacity 240ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-green-button:hover {
+  background: rgba(47, 163, 107, 0.3);
+  border-color: rgba(110, 215, 160, 0.5);
+  filter: brightness(1.08);
+  transform: scale(1.03);
+}
+
+.glass-green-button:hover::before {
+  opacity: 1;
 }
 
 .glow-text {
-  text-shadow: 0 0 22px rgba(110, 215, 160, 0.38);
+  text-shadow: none;
+}
+
+button,
+input,
+select,
+textarea {
+  border-radius: 0.5rem;
 }
 
 /* Accessibility: Focus indicators */
@@ -130,5 +237,13 @@ textarea:focus-visible {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .glass-nav-button {
+    transform: none !important;
+  }
+
+  .glass-nav-button::before {
+    opacity: 0 !important;
   }
 }

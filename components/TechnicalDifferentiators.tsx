@@ -39,7 +39,7 @@ export default function TechnicalDifferentiators() {
   ];
 
   return (
-    <section id="licensing" className="relative z-10 py-24 bg-panel/70 border-t border-brand-green/20">
+    <section id="licensing" className="relative z-10 py-24 border-t border-brand-green/20">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold mb-4 text-text-primary">AI Solutions Are Great Until They Arent</h2>
