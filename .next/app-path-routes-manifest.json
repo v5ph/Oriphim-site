@@ -1,0 +1,11 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/api/submit-form/route": "/api/submit-form",
+  "/signup/page": "/signup",
+  "/page": "/",
+  "/signin/page": "/signin",
+  "/blog/page": "/blog",
+  "/legal/page": "/legal",
+  "/privacy/page": "/privacy",
+  "/sla/page": "/sla"
+}
