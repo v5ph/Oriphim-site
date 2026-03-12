@@ -20,31 +20,29 @@ export default function CoreCompetencies() {
           <div className="glass-panel rounded-2xl p-8 transition-all group hover:-translate-y-1">
             <div className="mono text-4xl text-text-secondary/40 mb-6 group-hover:text-accent-green transition-colors">01</div>
             <h3 className="text-xl font-bold mb-4 text-text-primary">
-              Mathematical Constraint Validation
+              Pre-Execution Logic
             </h3>
             <p className="text-text-secondary leading-relaxed text-sm">
-              Every AI trade is mathematically validated before execution. No fractional shares. Balance always ≥ 0. Position limits enforced. 
-              Oriphim blocks hallucinated actions that would violate the laws of finance—preventing the impossible from happening.
+              Every AI action is mathematically verified against your fund's risk parameters before it reaches the exchange.
+              No balance violations. No hallucinated assets. Zero-trust execution by design.
             </p>
           </div>
 
           <div className="glass-panel rounded-2xl p-8 transition-all group hover:-translate-y-1">
             <div className="mono text-4xl text-text-secondary/40 mb-6 group-hover:text-accent-green transition-colors">02</div>
-            <h3 className="text-xl font-bold mb-4 text-text-primary">Real-Time Regulatory Compliance</h3>
+            <h3 className="text-xl font-bold mb-4 text-text-primary">Real-Time Compliance</h3>
             <p className="text-text-secondary leading-relaxed text-sm">
-              Automatic detection of MiFID II, Dodd-Frank, wash sale, and pattern day trading violations. 
-              Your autonomous agents integrate regulatory rules at the source, not as an afterthought. 
-              Stop violations before regulators do.
+              Bypass the post-mortem audit cycle. Oriphim maps agent intent directly to MiFID II and
+              Dodd-Frank protocols at the source. Stop violations before they exist.
             </p>
           </div>
 
           <div className="glass-panel rounded-2xl p-8 transition-all group hover:-translate-y-1">
             <div className="mono text-4xl text-text-secondary/40 mb-6 group-hover:text-accent-green transition-colors">03</div>
-            <h3 className="text-xl font-bold mb-4 text-text-primary">Audit-Ready Execution Logs</h3>
+            <h3 className="text-xl font-bold mb-4 text-text-primary">Immutable Proof</h3>
             <p className="text-text-secondary leading-relaxed text-sm">
-              Cryptographically signed logs show *why* each action was approved or blocked. 
-              When regulators ask, you have proof your AI operated within guardrails. 
-              Transform compliance from liability to competitive advantage.
+              Generate cryptographically signed execution logs that prove compliance to regulators instantly.
+              Transform your audit trail from a liability into a competitive advantage.
             </p>
           </div>
         </div>

@@ -523,6 +523,9 @@ video {
 .z-10 {
   z-index: 10;
 }
+.z-20 {
+  z-index: 20;
+}
 .z-50 {
   z-index: 50;
 }
@@ -1315,12 +1318,20 @@ textarea:focus-visible {
     margin-top: 0px;
   }
 
+  .md\:block {
+    display: block;
+  }
+
   .md\:flex {
     display: flex;
   }
 
   .md\:hidden {
     display: none;
+  }
+
+  .md\:max-w-\[52\%\] {
+    max-width: 52%;
   }
 
   .md\:grid-cols-3 {
@@ -1348,6 +1359,12 @@ textarea:focus-visible {
   .md\:text-7xl {
     font-size: 4.5rem;
     line-height: 1;
+  }
+}
+@media (min-width: 1024px) {
+
+  .lg\:max-w-\[50\%\] {
+    max-width: 50%;
   }
 }
 

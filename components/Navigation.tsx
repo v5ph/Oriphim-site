@@ -45,10 +45,10 @@ export default function Navigation() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8 mono text-xs text-text-secondary">
           <button suppressHydrationWarning onClick={() => scrollToSection('infrastructure')} className="hover:text-accent-green transition-colors">
-            WATCHER PROTOCOL
+            EXECUTION GATE
           </button>
           <button suppressHydrationWarning onClick={() => scrollToSection('licensing')} className="hover:text-accent-green transition-colors">
-            AUDIT & COMPLIANCE
+            FAILURE STATES
           </button>
           <button
             suppressHydrationWarning
@@ -57,7 +57,7 @@ export default function Navigation() {
             onMouseLeave={handleGlassMouseLeave}
             className="px-4 py-2 rounded-lg glass-nav-button font-semibold"
           >
-            BOOK DEMO
+            REQUEST RISK REPORT
           </button>
         </div>
 
@@ -78,10 +78,10 @@ export default function Navigation() {
         <div className="md:hidden absolute top-16 left-0 w-full bg-panel border-b border-brand-green/20">
           <div className="flex flex-col gap-4 p-6 mono text-xs text-text-secondary">
             <button suppressHydrationWarning onClick={() => scrollToSection('infrastructure')} className="text-left hover:text-accent-green transition-colors">
-              WATCHER PROTOCOL
+              EXECUTION GATE
             </button>
             <button suppressHydrationWarning onClick={() => scrollToSection('licensing')} className="text-left hover:text-accent-green transition-colors">
-              AUDIT & COMPLIANCE
+              FAILURE STATES
             </button>
             <button
               suppressHydrationWarning
@@ -90,7 +90,7 @@ export default function Navigation() {
               onMouseLeave={handleGlassMouseLeave}
               className="px-4 py-2 rounded-lg glass-nav-button font-semibold text-center"
             >
-              BOOK DEMO
+              REQUEST RISK REPORT
             </button>
           </div>
         </div>

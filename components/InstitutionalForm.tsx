@@ -105,11 +105,12 @@ export default function InstitutionalForm() {
   return (
     <section id="access" className="relative z-10 py-24 border-t border-brand-green/20">
       <div className="max-w-4xl mx-auto px-6 text-center">
-        <h2 className="text-3xl font-bold mb-6 text-text-primary">Financial Institution Partnership</h2>
+        <h2 className="text-3xl font-bold mb-6 text-text-primary">Request a 72-Hour Risk Report</h2>
         <p className="text-text-secondary mb-12">
-          <span className="text-text-primary font-bold">Note:</span> We accept{' '}
-          <span className="text-brand-green font-bold">1 hedge fund or financial institution per quarter</span> for deep integration.
-          This ensures white-glove onboarding and dedicated validation infrastructure.
+          Start with a deterministic risk assessment, then move to production integration.
+          <span className="text-text-primary font-bold"> For full deployment:</span> we accept{' '}
+          <span className="text-brand-green font-bold">one hedge fund or financial institution partner per quarter</span>
+          {' '}to preserve white-glove onboarding and dedicated validation infrastructure.
         </p>
 
         <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4 text-left glass-panel rounded-2xl p-6 md:p-8">
@@ -208,7 +209,7 @@ export default function InstitutionalForm() {
             onMouseLeave={handleGlassMouseLeave}
             className="w-full glass-green-button text-white font-bold py-4 mt-4 rounded-lg mono uppercase disabled:opacity-50"
           >
-            {isSubmitting ? 'SUBMITTING...' : 'Request Partnership'}
+            {isSubmitting ? 'SUBMITTING...' : 'Request Risk Report'}
           </button>
         </form>
       </div>

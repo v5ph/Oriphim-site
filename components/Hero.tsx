@@ -26,34 +26,36 @@ export default function Hero() {
   return (
     <section className="relative z-10 min-h-screen flex items-center justify-center pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-6 w-full">
-        <div className="max-w-4xl">
+        <div className="relative">
+          <div className="max-w-4xl md:max-w-[52%] lg:max-w-[50%] relative z-20">
           <p className="mono text-brand-green mb-4 tracking-[0.35em] text-xs uppercase">
-            AI CIRCUIT BREAKERS FOR FINANCIAL SYSTEMS
+            Deterministic Governance for Autonomous Finance.
           </p>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-8 text-text-primary">
             Stop Autonomous AI <br />
             <span className="font-bold text-accent-green">Before It Breaks.</span>
           </h1>
           <p className="text-xl md:text-2xl text-text-secondary font-normal max-w-2xl leading-relaxed mb-12">
-            Your trading agents execute thousands of transactions per second. A single hallucinated action can trigger regulatory violations, market manipulation flags, and multi-million dollar losses. Oriphim validates every action in real-time—blocking the impossible before it executes.
+            Stop AI Hallucinations Before They Hit the Order Book. Oriphim intercepts agentic intent in real-time, enforcing mathematical constraints on every transaction. Because in trading, 'almost right' is a regulatory catastrophe.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <button
               suppressHydrationWarning
-              onClick={() => scrollToSection('access')}
+              onClick={() => scrollToSection('quant-audit')}
               onMouseMove={handleGlassMouseMove}
               onMouseLeave={handleGlassMouseLeave}
               className="mono glass-green-button text-white px-8 py-4 rounded-lg font-bold"
             >
-              SCHEDULE PROOF OF CONCEPT
+              REQUEST 72-HOUR RISK REPORT
             </button>
             <button
               suppressHydrationWarning
               onClick={() => scrollToSection('infrastructure')}
               className="mono bg-transparent text-text-primary px-8 py-4 rounded-lg border border-brand-green/40 hover:border-accent-green hover:text-accent-green transition-colors"
             >
-              HOW IT WORKS
+              SEE EXECUTION GATE
             </button>
+          </div>
           </div>
         </div>
       </div>

@@ -58,10 +58,14 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/favicon.ico',
-    apple: '/favicon.ico',
+    icon: [
+      { url: '/favicon.ico?v=20260311b' },
+      { url: '/favicon-16x16.png?v=20260311b', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png?v=20260311b', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.png?v=20260311b',
   },
-  manifest: '/site.webmanifest',
+  manifest: '/site.webmanifest?v=20260311b',
 }
 
 export default function RootLayout({

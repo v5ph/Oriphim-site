@@ -1,39 +1,39 @@
 export default function TechnicalDifferentiators() {
   const comparisons = [
     {
-      approach: 'Monitoring only',
+      approach: 'Monitoring tools',
       example: '(e.g., Datadog alerts)',
-      gap: 'You see the loss AFTER it happens',
-      oriphim: 'Validation BEFORE execution'
+      gap: 'You lose money in real-time and find out via alert',
+      oriphim: 'Execution is blocked before it reaches the order book'
     },
     {
       approach: 'Rule engines',
       example: '',
-      gap: "Can't detect hallucinations (AI making up facts)",
-      oriphim: 'Semantic + numeric validation catches both'
+      gap: 'Static policy misses semantic hallucinations under market stress',
+      oriphim: 'Semantic + numeric validation on every action'
     },
     {
       approach: 'Human approval gates',
       example: '',
-      gap: "Slows execution, doesn't scale to 1000s/sec",
-      oriphim: 'Autonomous + cryptographically signed'
+      gap: 'You sacrifice 90% of AI speed for 10% more safety',
+      oriphim: 'Full-speed execution with sub-millisecond validation'
     },
     {
       approach: 'Log analysis',
       example: '',
-      gap: 'Post-mortem investigation (too late)',
+      gap: 'Evidence arrives after exposure, not before risk',
       oriphim: 'Immutable chain-of-custody proof'
     },
     {
       approach: 'Proxy filters',
       example: '',
-      gap: 'Requires SSL keys, network latency',
+      gap: 'Operational overhead and latency increase attack surface',
       oriphim: 'Async + API-based (no SSL required)'
     },
     {
       approach: 'SDK wrappers',
       example: '',
-      gap: 'Can crash agent if validation fails',
+      gap: 'Validation faults can corrupt state and break execution loops',
       oriphim: 'Atomic rollback preserves agent state'
     }
   ];
@@ -42,9 +42,9 @@ export default function TechnicalDifferentiators() {
     <section id="licensing" className="relative z-10 py-24 border-t border-brand-green/20">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4 text-text-primary">AI Solutions Are Great Until They Arent</h2>
+          <h2 className="text-3xl font-bold mb-4 text-text-primary">The Logic Trap in Autonomous Trading</h2>
           <p className="text-text-secondary max-w-2xl mx-auto">
-            Monitoring, rule engines, approval gates—they all fail at the moment that matters. Here's where the gaps are, and why they're not acceptable at scale.
+            Most tools tell you what failed after the event. Oriphim acts as a deterministic execution gate that prevents failure states before execution.
           </p>
         </div>
 
@@ -53,7 +53,7 @@ export default function TechnicalDifferentiators() {
             <thead>
               <tr className="border-b border-brand-green/25">
                 <th className="text-left py-4 px-4 font-bold text-text-primary mono text-sm">Approach</th>
-                <th className="text-left py-4 px-4 font-bold text-text-primary mono text-sm">Gap</th>
+                <th className="text-left py-4 px-4 font-bold text-text-primary mono text-sm">Failure State</th>
                 <th className="text-left py-4 px-4 font-bold text-accent-green mono text-sm">Oriphim Solution</th>
               </tr>
             </thead>
